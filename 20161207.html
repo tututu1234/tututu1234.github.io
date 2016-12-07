@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			pre{background: #aaa;width: 500px;}
+		</style>
+		<script type="text/javascript">
+		</script>
+	</head>
+	<body>
+		<h1>JavaScript复习总结</h1>
+		<h3>JavaScript编程规范</h3>
+		<h4>1.通用命名规范</h4>
+		<p>所有变量必须是有意义的英文，严禁使用拼音</p>
+		<p>变量命名采用小驼峰（第一个单字母小写，其余单词首字母大写）</p>
+		<p>常量必须所有单词大写，并且每个单词间加下划线</p>
+		<p>所有全局变量必须初始化</p>
+		<h4>2.变量命名规范</h4>
+		<p>类型前缀+有意义的单词</p>
+		<p>字符串：sXXX，如：sName</p>
+		<p>数字：nXXX，如：nPage</p>
+		<p>逻辑：bXXX，如：bChecked</p>
+		<p>正则：rXXX，如：rDomain</p>
+		<p>函数：fXXX，如：fGetlist</p>
+		<p>DOM节点:dXXX,如：dDiv</p>
+		<p>其他类型：oXXX，如：oButton</p>
+		<p>循环变量:i,j,k以此类推</p>
+		<h4>3、函数命名规范</h4>
+		<p>普通函数:动词+名词,如fGetlist、fGetVersion;</p>
+		<p>涉及逻辑返回值的函数:is、has、can,如:fisAdmin、fhasChild;</p>
+		<p>内部函数:_f+上面规则,如:fLoopCount;</p>
+        
+        <h3>JavaScript函数</h3>
+        <h4>1.函数的声明</h4>
+        <p>直接声明</p>
+        <pre>
+    function fGetlist(){
+        		
+    }
+        </pre>
+        <p>表达式声明</p>
+        <pre>
+    var fGetlist=function(){
+        		
+    }
+        </pre>
+        <p>匿名函数</p>
+        <pre>
+    function(){
+        		
+    }
+        </pre>
+        <h4>2.函数的调用</h4>
+        <p>声明一个函数，并调用</p>
+        <pre>
+    function func() {
+    alert("Hello World");
+    }
+    func();
+        </pre>
+        <p>使用函数的Lambda表达式定义函数，然后调用</p>
+        <pre>
+    var func = function() {
+    alert("你好，程序员");
+    };
+    func();
+        </pre>
+        <p>匿名调用</p>
+        <pre>
+    (function(){
+    	alert(1)
+    })();
+        </pre>
+        
+        <h3>for循环</h3>
+		<h4>1.for循环的格式</h4>
+		<pre>for(申明变量;表达式或值;表达式或值(后运行)){
+			满足条件执行;
+		}</pre>
+		<h4>2.实例</h4>
+		<h5>css部分</h5>
+		<pre>
+			#box{
+			     width: 260px;
+			     height: 260px;
+			     border:1px solid black;
+			    }
+			#box div{
+			    width: 50px;
+			    height: 50px;
+			    border:1px solid black;
+			    float: left;
+			    text-align: center;
+			    line-height: 50px;
+			    }	    
+		</pre>
+		<h5>js部分</h5>
+		<pre>			
+	     	var box=document.getElementById('box');
+	     	var str="";
+	     	    for (var j = 0;j < 5;j++) {
+	     		  for (i = 0;i < 5;i++) {
+	     		  	var m=(j*5+i);
+	     		  	if(m > 2){
+	     		  str+="&ltdiv>"+(m-2)+"&lt/div>";
+	     		  	}else{
+	     		  	str+="&ltdiv>"+"&lt/div>";	
+	     		  	}
+	     	    }
+	     	    box.innerHTML=str;
+	     	   }   
+		</pre>
+		<p>外面的for运行一次,里面的for运行五次</p>
+		<h5>图片如下</h5>
+        <img src="http://image18.poco.cn/mypoco/myphoto/20161207/19/18418598620161207193836034_640.jpg?289x290_120"/>
+	</body>
+</html>
