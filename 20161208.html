@@ -1,1 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JavaScript内置对象</title>
+	</head>
+	<body>
+		<h1>JavaScript内置对象</h1>
+		<h3>1.String对象</h3>
+		<h4>字符串声明</h4>
+		<p>推荐使用：var str="i am a string";</p>
+		<h4>字符串方法</h4>
+		<p>str.length:字符串长度</p>
+		<p>str.indexof():可返回某个指定的字符串值在字符串中首次出现的位置。</p>
+		<pre>
+			var str="abc de fg";//空格也算在内
+			var str1="我是字符串我";//按照数量计算，长度为6
+			console.log(str1.length);
+			console.log(str1.indexOf("我"));//返回字符串值在字符串中首次出现的位置
+			console.log(str1.indexOf("我",str1.indexOf("我")+1));//第二次出现的位置
+		</pre>
+		<p>substr():可在字符串中抽取从 start 下标开始的指定数目的字符。</p>
+		<p>substring():用于提取字符串中介于两个指定下标之间的字符。</p>
+		<p>split():用于把一个字符串分割成字符串数组。</p>
+		<p>slice():可提取字符串的某个部分，并以新的字符串返回被提取的部分。</p>
+		<pre>
+			var str2="hello world hello world";
+			document.write(str2.match("world"));//匹配字符串
+			console.log(str2.substr(4,3)+"截取之后的原字符串"+str2)//不改变原字符串，只截取
+			console.log(str2.substring(1,3)+"截取之后的原字符串"+str2);//不改变原字符串
+			console.log(str2.substring(3,-3)+"截取之后的原字符串"+str2);//往前截取
+			console.log(str2.substr(3,-2)+"截取之后的原字符串"+str2);//长度为负，没有截取到
+			console.log(str2.slice(3)+"截取之后的原字符串"+str2);//不改变原字符串
+			console.log(str2.slice(3,6)+"截取之后的原字符串"+str2);
+			console.log(str2.split("o",2)+"截取之后的原字符串"+str2);//返回数组,以o位分界线
+		</pre>
+		<h4>示例</h4>
+		<pre>
+			var str = "[ti:The Fox][00:00.00] The Fox - Ylvis";
+			var str2 = str.split("]");
+			document.write("歌名:"+(str2[0].split(":"))[1]);
+			document.write("时间:"+(str2[1].split("["))[1]);
+			document.write("歌词:"+str2[2].split("-")[1]);
+		</pre>
+		<p>结果：</p>
+		<pre>
+			歌名:The Fox
+                        时间:00:00.00
+                        歌词: Ylvis
+		</pre>
+		
+		<h1>2.Array对象</h1>
+		<h3>Array声明</h3>
+		<pre>
+			var arr = [1,2,3,4];
+			var arr1 = [];
+			var arr2 = new Array();
+			var arr3 = new Array(3);//长度为3的数组
+			var arr4 = new Array(3,1);//值为3,1的数组
+		</pre>
+		<h3>Array方法</h3>
+		<p>pop() 方法用于删除并返回数组的最后一个元素。</p>
+		<p>push() 方法可向数组的末尾添加一个或多个元素，并返回新的长度。</p>
+		<p>shift() 方法用于把数组的第一个元素从其中删除，并返回第一个元素的值。</p>
+		<p>slice() 方法可从已有的数组中返回选定的元素。</p>
+		<p>splice() 方法向/从数组中添加/删除项目，然后返回被删除的项目。</p>
+		<p>forEach方法</p>
+		<pre>
+			var arr = [1,2,3,4,5,6];
+			arr.forEach(function(element,index,array){
+				console.log("index:"+index);
+				console.log("element:"+element);
+			})
+		</pre>
+		<p>结果：</p>
+		<pre>
+              "index:0"	 
+              "element:1"	 
+              "index:1"	 
+              "element:2"	 
+              "index:2"	 
+              "element:3"	 
+              "index:3"	 
+              "element:4"	 
+              "index:4"	 
+              "element:5"	 
+              "index:5"	 
+              "element:6"	 
+		</pre>
+		
+		<h3>3.object对象</h3>
+		<h4>object声明</h4>
+		<p>通用格式:var obj = {key:value};</p>
+		<p>var obj1 = {name:"张三",age:400,sex:"male"};</p>
+		<h4>object属性</h4>
+		<pre>
+			console.log(obj1.name);//获取name属性
+			console.log(obj1["age"]);//获取age属性
+		</pre>
+		<p>for in 遍历对象属性</p>
+		<pre>
+			for (var i in obj1) {
+				console.log(obj1[i])
+			}
+		</pre>
+		<h4>示例</h4>
+		<img src="http://image18.poco.cn/mypoco/myphoto/20161208/19/1841859862016120819191709_640.jpg?871x581_120"/>
+		<p>结果展示：</p>
+		<img src="http://image18.poco.cn/mypoco/myphoto/20161208/19/18418598620161208191853074_640.jpg?354x611_120"/>
+	</body>
+</html>
 
