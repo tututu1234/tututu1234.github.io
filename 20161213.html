@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		    *{margin: 0;padding: 0;}
+			table{border:1px solid #eee;text-align: center;clear: left;}
+			td{width: 30px;height: 30px;color: darkgreen;}
+			li{width: 34px;height: 30px;float: left;list-style-type: none;text-align: center;color:lightseagreen;line-height: 30px;}
+		</style>
+	</head>
+	<body>
+		<select id="yearSelect" onchange="foo()">
+			<option value="2012">2012</option>
+			<option value="2013">2013</option>
+			<option value="2014">2014</option>
+			<option value="2015">2015</option>
+			<option value="2016">2016</option>
+			<option value="2017">2017</option>
+			<option value="2018">2018</option>
+			<option value="2019">2019</option>
+		</select>
+		<select id="monthSelect" onchange="foo()">
+			<option value="12">十二月</option>
+			<option value="11">十一月</option>
+			<option value="10">十月</option>
+			<option value="9">九月</option>
+			<option value="8">八月</option>
+			<option value="7">七月</option>
+			<option value="6">六月</option>
+			<option value="5">五月</option>
+			<option value="4">四月</option>
+			<option value="3">三月</option>
+			<option value="2">二月</option>
+			<option value="1">一月</option>
+			
+		</select>
+		<div>
+			<ul><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li><li>日</li></ul>
+		</div>
+		<table id="calTb"></table>
+		<script type="text/javascript">
+			var calTb = document.getElementById("calTb");
+			var yearSelect = document.getElementById("yearSelect");
+			var monthSelect = document.getElementById("monthSelect");
+			var monthList = monthSelect.getElementsByTagName("option");
+			
+			//表格生成函数
+			function Fun(){
+				this.forFun = function(rowNum,cellNum,startDay,daysNum,lastMonth){
+					for (var i = 0;i < rowNum;i++) {
+						var tr = calTb.insertRow();
+						for (var j = 0;j < cellNum ;j++) {
+							var td = tr.insertCell();
+							var m = cellNum*i+j+1;
+							if(m<startDay+1){
+								td.style.color = "darkgrey";
+								td.innerText = lastMonth-startDay+m;
+							}else if(m-startDay>daysNum){
+								td.style.color = "darkgrey";
+								td.innerText = m - daysNum-startDay;
+							}else{
+								td.innerText = m-startDay;
+							}
+						}
+					}
+				}
+				
+				//鼠标移入效果
+				this.overFun = function(){
+					var cellDate = document.getElementsByTagName("td");
+					for (var n = 0;n < cellDate.length; n++) {
+						cellDate[n].onmouseenter = function(){
+							for (var k = 0;k < cellDate.length;k++) {
+								cellDate[k].style.background = "white"
+							}
+							this.style.background = "#eee";
+						}
+					}
+				}
+				
+			}
+			
+			//根据具体年月生成表格函数
+			function calMonth(year,month){
+				var calDate = new Date(year,month,0);
+			    var dayNum = calDate.getDate();//取到当月的天数
+			    var calFirst = new Date(year,month-1,1);
+			    if(calFirst.getDay() == 0){
+			    	var firstDay = 6;
+			    }else{
+			    	var firstDay = calFirst.getDay()-1;
+			    }                                       //取到第一天是星期几
+			    var weekNum = Math.ceil((dayNum+firstDay)/7);//取到行数
+			    var lastMonth = new Date(year,month-1,0);
+			    var lastMonthdays = lastMonth.getDate();//获取上个月的天数
+			    var oneWeek = 7;
+			    var calendar = new Fun();
+			    calendar.forFun(weekNum,oneWeek,firstDay,dayNum,lastMonthdays);
+			    calendar.overFun();
+			}
+			
+			//生成当前年月的表格
+			var currentDay = new Date();
+			var currentYear = currentDay.getFullYear();
+			var currentMonth = currentDay.getMonth()+1;
+			yearSelect.value = currentYear;
+			monthSelect.value = currentMonth;
+			calMonth(currentYear,currentMonth);
+			
+			//切换年月
+			function foo(){
+				clearTable();
+				var year = yearSelect.value;
+				var month = monthSelect.value;
+				calMonth(year,month);
+			}
+			
+			//清楚表格内子节点
+			function clearTable(){
+				var tableChild = calTb.childNodes;
+				for(var i=calTb.childNodes.length-1;i>=0;i--) {
+                  calTb.removeChild(calTb.lastChild);
+                }
+			}
+		</script>
+	</body>
+</html>
