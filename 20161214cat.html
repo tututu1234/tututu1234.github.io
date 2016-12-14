@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas" width="1200" height="1200"></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("canvas");
+			var ctx = canvas.getContext("2d");
+			ctx.lineWidth=10;
+			
+			//脸
+			ctx.beginPath();
+			ctx.moveTo(200,400);
+			ctx.bezierCurveTo(200,50,800,50,800,400);
+			ctx.bezierCurveTo(800,650,200,650,200,400)
+			ctx.stroke();
+			
+			//耳朵
+			ctx.beginPath();
+			ctx.moveTo(400,150);
+			ctx.quadraticCurveTo(250,75,250,245);
+			ctx.stroke();
+			
+			ctx.beginPath();
+			ctx.moveTo(600,150);
+			ctx.quadraticCurveTo(750,75,750,245);
+			ctx.stroke();
+			
+			//眉毛
+			ctx.beginPath();
+			ctx.moveTo(420,200)
+			ctx.quadraticCurveTo(380,150,330,210);
+			ctx.stroke();
+			
+			ctx.beginPath();
+			ctx.moveTo(580,200)
+			ctx.quadraticCurveTo(620,150,670,210);
+			ctx.stroke();
+			
+			//眼睛
+			ctx.beginPath();
+			ctx.arc(375,275,40,0,2*Math.PI);
+			ctx.fill();
+			
+			ctx.beginPath();
+			ctx.arc(625,275,40,0,2*Math.PI);
+			ctx.fill();
+			
+			//眼珠
+			ctx.beginPath();
+			ctx.arc(390,250,5,0,2*Math.PI);
+			ctx.fillStyle="white";
+			ctx.fill();
+			
+			ctx.beginPath();
+			ctx.arc(640,250,5,0,2*Math.PI);
+			ctx.fill();
+			
+			//鼻子
+			ctx.beginPath();
+			ctx.arc(500,350,8,0,2*Math.PI);
+			ctx.fillStyle = "black";
+			ctx.fill();
+			
+			//鼻子两边
+			ctx.beginPath();
+			ctx.moveTo(450,350);
+			ctx.bezierCurveTo(450,380,500,400,498,350);
+			ctx.stroke();
+			
+			ctx.beginPath();
+			ctx.moveTo(500,350);
+			ctx.bezierCurveTo(500,400,550,380,550,350);
+			ctx.stroke();
+			
+			//两边胡须
+			ctx.beginPath();
+			ctx.moveTo(170,350);
+			ctx.lineTo(225,355);
+			ctx.stroke();
+			
+			ctx.beginPath();
+			ctx.moveTo(170,390);
+			ctx.lineTo(220,380);
+			ctx.stroke();
+			
+			ctx.beginPath();
+			ctx.moveTo(170,430);
+			ctx.lineTo(220,405);
+			ctx.stroke();
+			
+			ctx.beginPath();
+			ctx.moveTo(770,355);
+			ctx.lineTo(850,350);
+			ctx.stroke();
+			
+			ctx.beginPath();
+			ctx.moveTo(770,380);
+			ctx.lineTo(850,390);
+			ctx.stroke();
+			
+			ctx.beginPath();
+			ctx.moveTo(770,405);
+			ctx.lineTo(850,430);
+			ctx.stroke();
+			
+			
+			//腮红
+			ctx.beginPath();
+			ctx.fillStyle = "pink";
+			ctx.moveTo(280,390);
+			ctx.bezierCurveTo(280,360,380,360,380,390);
+			ctx.fill();
+			
+			ctx.beginPath();
+			ctx.moveTo(280,390);
+			ctx.bezierCurveTo(280,430,380,430,380,390);
+			ctx.fill();
+            
+            ctx.beginPath();
+			ctx.moveTo(600,390);
+			ctx.bezierCurveTo(600,360,700,360,700,390);
+			ctx.fill();
+			
+			ctx.beginPath();
+			ctx.moveTo(600,390);
+			ctx.bezierCurveTo(600,430,700,430,700,390);
+			ctx.fill();
+			
+			//爱心
+			ctx.beginPath();
+			ctx.fillStyle = "red"
+			ctx.moveTo(500,550);
+			ctx.bezierCurveTo(350,400,130,650,500,800);
+			ctx.stroke();
+			ctx.fill();
+			
+			ctx.beginPath();
+			ctx.moveTo(499,550);
+			ctx.bezierCurveTo(650,400,870,650,495,800);
+			ctx.stroke();
+			ctx.fill();
+			
+			//手
+			ctx.beginPath();
+			ctx.fillStyle = "yellow";
+			ctx.arc(330,640,40,0,2*Math.PI);
+			ctx.stroke();
+			ctx.fill();
+			
+			ctx.beginPath();
+			ctx.arc(670,640,40,0,2*Math.PI);
+			ctx.stroke();
+			ctx.fill();
+		</script>
+	</body>
+</html>
