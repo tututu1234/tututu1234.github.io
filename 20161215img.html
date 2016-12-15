@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+
+	<body>
+		<canvas id="canvas" width="800" height="614"></canvas>
+		<button id="left">左</button>
+		<button id="right">右</button>
+		<script type="text/javascript">
+			var canvas = document.getElementById("canvas");
+			var cxt = canvas.getContext("2d");
+			var left = document.getElementById("left");
+			var right = document.getElementById("right");
+			var img = new Image()
+			img.src = "http://image18.poco.cn/mypoco/myphoto/20161215/19/18418598620161215195524036_640.jpg?800x614_130"
+			img.onload = function() {
+				cxt.drawImage(img, 0, 0);
+			}
+
+			function moveright() {
+				var x = canvas.width / 2;  ///画布宽度的一半
+				var y = canvas.height / 2; ///画布高度的一半
+				cxt.clearRect(0, 0, canvas.width, canvas.height); //先清掉画布上的内容
+				cxt.translate(x, y); //将绘图原点移到画布中点
+				cxt.rotate((Math.PI / 180) * 90); //旋转角度
+				cxt.translate(-x, -y); //将画布原点移动
+				cxt.drawImage(img, 0, 0); //绘制图片  
+			}
+			right.onclick = function() {
+				moveright()
+			}
+
+			function moveleft() {
+				var  x = canvas.width / 2; ///画布宽度的一半
+				var  y = canvas.height / 2; ///画布高度的一半
+				cxt.clearRect(0, 0, canvas.width, canvas.height); //先清掉画布上的内容
+				cxt.translate(x, y); //将绘图原点移到画布中点
+				cxt.rotate((Math.PI / 180) * -90); //旋转角度
+				cxt.translate(-x, -y); //将画布原点移动
+				cxt.drawImage(img, 0, 0); //绘制图片  
+			}
+			left.onclick = function() {
+				moveleft()
+			}
+			
+	
+			
+		</script>
+
+	</body>
+
+</html>
