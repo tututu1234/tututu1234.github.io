@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			#pageBar {
+				width: 1000px;
+				height: 50px;
+				text-align: center;
+				line-height: 50px;
+				margin-top: 50px;
+			}
+			
+			#prePage {
+				width: 100px;
+				height: 50px;
+				float: left;
+				border: 1px solid darkslategrey;
+				cursor: pointer;
+			}
+			
+			#nextPage {
+				width: 100px;
+				height: 50px;
+				float: left;
+				border: 1px solid darkslategrey;
+				cursor: pointer;
+			}
+			
+			#pageList {
+				width: 585px;
+				height: 50px;
+				float: left;
+			}
+			
+			#pageList>div {
+				width: 50px;
+				height: 50px;
+				border: 1px solid darkslategrey;
+				margin-left: 5px;
+				float: left;
+				cursor: pointer;
+				color: darkblue
+			}
+			
+			#pageList>div:hover {
+				border: 1px solid deepskyblue;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="pageBar">
+			<div id="prePage">《上一页</div>
+			<div id="pageList">
+				<div>1</div>
+				<div>2</div>
+				<div>3</div>
+				<div>4</div>
+				<div>5</div>
+				<div>6</div>
+				<div>7</div>
+				<div>8</div>
+				<div>9</div>
+				<div>10</div>
+			</div>
+			<div id="nextPage">下一页》</div>
+		</div>
+		<script type="text/javascript">
+			var pageBar = document.getElementById("pageBar");
+			var prePage = document.getElementById("prePage");
+			var nextPage = document.getElementById("nextPage");
+			var pageList = document.getElementById("pageList");
+			var pageNum = pageList.getElementsByTagName("div");
+			var num;
+
+			function Page() {
+				this.pageshift = function() {
+					for(var k = 0; k < pageNum.length; k++) {
+						pageNum[k].onmouseenter = function() {
+							if(this.style.fontWeight == "normal") {
+								this.style.border = "1px solid deepskyblue";
+							}
+						}
+						pageNum[k].onmouseleave = function() {
+							if(this.style.fontWeight == "normal") {
+								this.style.border = "1px solid darkslategrey";
+							}
+						}
+					}
+					for(var i = 0; i < pageNum.length; i++) {
+						pageNum[i].cl = i;
+						pageNum[i].onclick = function() {
+							num = this.cl;
+							reset();
+							this.style.fontWeight = "bolder";
+							this.style.border = "1px solid white";
+						}
+					}
+				}
+
+				this.lastPage = function() {
+					num--;
+					if(num >= 0) {
+						reset();
+						pageNum[num].style.fontWeight = "bolder";
+						pageNum[num].style.border = "1px solid white";
+					}
+                    return num;
+				}
+				
+				this.nextPage = function() {
+					num++;
+					if(num < 10) {
+						reset();
+						pageNum[num].style.fontWeight = "bolder";
+						pageNum[num].style.border = "1px solid white";
+					}
+                    return num;
+				}
+				
+				function reset(){
+					for(var j = 0; j < pageNum.length; j++) {
+							pageNum[j].style.fontWeight = "normal";
+							pageNum[j].style.border = "1px solid darkslategrey";
+						}
+				}
+			}
+
+			var pageFun = new Page();
+			pageFun.pageshift();
+			prePage.onclick = function() {
+				pageFun.lastPage();
+			}
+			nextPage.onclick = function(){
+				pageFun.nextPage();
+			}
+			
+		</script>
+	</body>
+
+</html>
