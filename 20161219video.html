@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			/*input{
+				width: 100px;
+			}*/
+			
+			#control {
+				width: 500px;
+				height: 20px;
+				position: absolute;
+				top: 270px;
+				left: 0px;
+				
+			}
+			
+			#duBar {
+				width: 450px;
+				height: 10px;
+				background: #aaa;
+				float: right;
+				margin-top: 5px;
+			}
+			
+			#proBar {
+				width: 1px;
+				height: 10px;
+				background: #666;
+				float: left;
+				z-index:10;
+			}
+			#dragBtn{
+				width: 10px;
+				height: 10px;
+				border-radius: 10px;
+				background: darkblue;
+				float: left;
+				z-index: 10;
+			}
+			
+			#videoBtn {
+				width: 40px;
+				height: 20px;
+				margin-left: 5px;
+				border-radius: 20px;
+				line-height: 15px;
+			}
+			
+			#preload{
+				width: 1px;
+				height: 10px;
+				background: deepskyblue;
+				z-index: 5;
+			}
+		</style>
+	</head>
+
+	<body>
+		<video id="video1" src="img/婚礼现场.webm" width="500px" height="300px"></video>
+		<div id="control">
+			<div id="duBar">
+				<div id="proBar"></div>
+				<div id="dragBtn"></div>
+				<div id="preload"></div>
+			</div>
+			<button id="videoBtn">播放</button>
+		</div>
+
+		<!--<input type="text" name="ctxt" id="ctxt" value="" />
+		<input type="text" name="dtxt" id="dtxt" value="" />-->
+		<script type="text/javascript">
+			var video1 = document.getElementById("video1");
+			var videoBtn = document.getElementById("videoBtn");
+			var ctxt = document.getElementById("ctxt");
+			var dtxt = document.getElementById("dtxt");
+			var duBar = document.getElementById("duBar");
+			var proBar = document.getElementById("proBar");
+			var dragBtn = document.getElementById("dragBtn");
+			var preload = document.getElementById("preload");
+			var st;
+			videoBtn.addEventListener("click", viedoControl);
+
+			function viedoControl() {
+				clearInterval(st);
+				if(videoBtn.innerHTML == "播放") {
+					video1.play();
+					videoBtn.innerHTML = "暂停";
+				} else {
+					video1.pause();
+					videoBtn.innerHTML = "播放";
+				}
+				st = setInterval(function() {
+					//					ctxt.value = parseInt(video1.currentTime);
+					//					dtxt.value = parseInt(video1.duration);
+					var current = video1.currentTime;
+					var duration = video1.duration;
+					proBar.style.width = current / duration * 450 + "px";
+					
+					var bufferTime = video1.buffered;
+					var tbuffed = bufferTime.end(bufferTime.length-1);
+					var buffPro = tbuffed/duration*450;
+					preload.style.width = buffPro+"px" ;
+				}, 300)
+			}
+
+			function timechange(time) {
+
+			}
+		</script>
+	</body>
+
+</html>
