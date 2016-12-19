@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{padding: 0;margin: 0;font-family: "微软雅黑";}
+			h1{width: auto;height: 100px;line-height: 100px;}
+			h3{width: auto;height: 60px;line-height: 60px;}
+			pre{width: 800px;height: auto;background:lightyellow;border: 2px solid grey;border-radius: 10px;margin-top: 30px;margin-bottom: 30px;padding: 5px;}
+		</style>
+	</head>
+	<body>
+	 <div style="width:1000px;height: auto;margin: auto;">
+	 	<h1>this指向</h1>
+	 	<h3>1.全局指向global --window -- BOM --browser object model</h3>
+	 	<pre>
+	 		var num = 10;
+			function foo(){
+				this.num = 1;
+			}
+			foo();
+			alert(num);
+	 	</pre>
+	 	<p>当不调用函数foo()时，弹出10.</p>
+	 	<p>调用函数foo()后，因为函数直接在全局中调用,this指向全局window.结果弹出1</p>
+	 	<h3>2.this指向对象</h3>
+	 	<pre>
+	 		var num = 3;//window 下num是3
+			var obj = {};
+			obj.num = 5;
+			obj.f = function(){
+				alert(this.num);//this for object{num:5}
+			}
+			obj.f();
+			alert("全局num"+num);
+	 	</pre>
+	 	<p>运行结果：先弹出5.因为this指向object{num：5}</p>
+	 	<p>再弹出：全局num3.this指向window</p>
+	 	<h3>3.函数返回指向</h3>
+	 	<pre>
+	 		var num = 2;
+			function foo() {
+				return function fun() {
+					return this.num;
+				}
+			}
+			var f = foo();
+			console.log(f());
+	 	</pre>
+	 	<p>运行结果：2。函数返回后指向全局window</p>
+	 	<h3>4.apply()改变函数内部this指向的对象</h3>
+	 	<pre>
+	 		var o = {num:100}
+			var num = 10;
+			var obj = {};
+			obj.num = 1;
+			obj.f = function(){
+				alert(this.num)
+			}
+			obj.f();//this for obj
+			//如果第一个参数为空，函数内部this指向window
+			obj.f.apply();//this for window
+			obj.f.apply(obj)//this for obj
+			obj.f.apply(o)//this for o
+	 	</pre>
+	 	<p>运行结果：先后弹出10 1 100</p>
+	 	<h3>5.示例问题一</h3>
+	 	<pre>
+	 		//Q1:this for what
+           var say = "hello world";
+           var obj = {};
+           obj.say = "hello object";
+           obj.foo = function(){
+           	return function(){
+           		return this.say;
+           	}
+           }
+           alert(obj.foo()());//返回函数在window运行
+           
+	 	</pre>
+	 	<p>运行结果：弹出hello world。相当于：</p>
+	 	<pre>
+	 	   var f = obj.foo();
+           alert(f());
+	 	</pre>
+	 	<h3>6.示例问题二</h3>
+	    <pre>
+	    	var say = "hello world";
+           var obj = {};
+           obj.say = "hello object";
+           obj.foo = function(){
+           	var that = this;
+           	return function(){
+           		return that.say;
+           	}
+           }
+           var f = obj.foo();
+           alert(obj.foo()());
+	    </pre>
+	    <p>运行结果：hello object</p>
+	 </div>
+		
+	</body>
+</html>
+
