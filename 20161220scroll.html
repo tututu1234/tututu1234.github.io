@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#container{
+				width: 300px;
+				border:1px solid black;
+				overflow-x: hidden;
+			}
+			#inContainer{
+				width: 600px;
+			}
+			span{
+				width: 300px;
+				display: block;
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<div id="inContainer">
+				<span>欢迎光临，本店季末大酬宾，积分换好礼.</span>
+				<span>欢迎光临，本店季末大酬宾，积分换好礼.</span>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var container = document.getElementById("container");
+			var inContainer = document.getElementById("inContainer");
+			var span1 = document.getElementsByTagName("span");
+			var st = setInterval(function(){
+				if(container.scrollLeft==span1[0].offsetWidth){
+					container.scrollLeft = 0;
+				}else{
+					container.scrollLeft++;
+				} 
+			},10)
+		</script>
+	</body>
+</html>
