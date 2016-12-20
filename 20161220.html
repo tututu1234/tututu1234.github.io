@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{padding: 0;margin: 0;font-family: "微软雅黑";}
+			h1{width: auto;height: 100px;line-height: 100px;}
+			h3{width: auto;height: 60px;line-height: 60px;}
+			pre{width: 800px;height: auto;background:lightyellow;border: 2px solid grey;border-radius: 10px;margin-top: 30px;margin-bottom: 30px;padding: 5px;}
+		</style>
+	</head>
+	<body>
+	 <div style="width:1000px;height: auto;margin: auto;">
+	 	<h1>学习方法总结</h1>
+	 	<p>1.自己思考</p>
+	 	<p>2.查看手册</p>
+	 	<p>3.上网搜索</p>
+	 	<p>4.与老师，同学讨论解决</p>
+	 	
+	 	<h1>video</h1>
+	 	<h3>1.布局</h3>
+	 	<pre>
+	 	&lt;video id="video1" width="500px" height="300px" >&lt;/video>
+		&lt;div id="control">
+			&lt;div id="duBar">
+				&lt;div id="proBar">&lt;/div>
+				&lt;div id="preload">&lt;/div>
+			&lt;/div>
+			&lt;button id="videoBtn">播放&lt;/button>
+		&lt;/div>
+		&lt;div id="listnum">	
+		&lt;/div>
+        &lt;button id="nextVideo">next&lt;/button>
+        &lt;button id="circle">&lt;/button>
+	 	</pre>
+		<h3>2.变量声明及播放器初始化</h3>
+		<pre>
+			var video1 = document.getElementById("video1");
+			var videoBtn = document.getElementById("videoBtn");
+			var ctxt = document.getElementById("ctxt");
+			var dtxt = document.getElementById("dtxt");
+			var duBar = document.getElementById("duBar");
+			var proBar = document.getElementById("proBar");
+			var dragBtn = document.getElementById("dragBtn");
+			var preload = document.getElementById("preload");
+			var nextVideo = document.getElementById("nextVideo");
+			var listnum = document.getElementById("listnum");
+			var circle = document.getElementById("circle");
+			var st;
+			var videoList = [
+			    {src:"img/婚礼现场.webm",poster:"img/banner.jpg"},
+			    {src:"img/movie.ogg",poster:"img/banner1.jpg"},
+			    {src:"img/婚礼现场.webm",poster:"img/img1.jpg"},
+			    {src:"img/movie.ogg",poster:"img/img6.jpg"},
+			];
+			//初始化
+			var n = 0;
+			video1.src = videoList[n].src;
+			video1.poster = videoList[n].poster;
+		</pre>
+		<h3>3.播放与暂停功能</h3>
+		<pre>
+			videoBtn.addEventListener("click", viedoControl);
+			function viedoControl() {
+				clearInterval(st);
+				if(videoBtn.innerHTML == "播放") {
+					video1.play();
+					videoBtn.innerHTML = "暂停";
+				} else {
+					video1.pause();
+					videoBtn.innerHTML = "播放";
+				}
+				st = setInterval(function() {
+					var current = video1.currentTime;
+					var duration = video1.duration;
+					proBar.style.width = current / duration * 450 + "px";  //进度条
+					var bufferTime = video1.buffered;
+					var tbuffed = bufferTime.end(bufferTime.length-1);
+					var buffPro = tbuffed/duration*450;
+					preload.style.width = buffPro+"px" ;        //缓存条
+				}, 300)
+			}
+		</pre>
+		<h3>4.进度条拖动</h3>
+		<pre>
+			function drag(){
+			var a = false;
+			duBar.addEventListener("mousedown",function(e){
+				a = true ;
+				clearInterval(st);
+            	if(e.clientX &lt; 500){
+						proBar.style.width = e.clientX - 50 + "px";
+						video1.currentTime = (e.clientX-50)/450*video1.duration;
+					}
+			});
+			duBar.addEventListener("mousemove",function(e){
+				if(a){
+					if(e.clientX &lt; 500){
+						proBar.style.width = e.clientX - 50 + "px";
+						video1.currentTime = (e.clientX-50)/450*video1.duration;
+					}	
+				}
+			});
+			window.addEventListener("mouseup",function(e){
+				if(a){
+					if(e.clientX &lt; 500){
+						proBar.style.width = e.clientX - 50 + "px";
+					}
+				}
+				a = false;
+			});
+			}
+			drag();
+		</pre>
+		<h3>5.播放模式</h3>
+		<pre>
+			var circleType = ["列表循环","重复播放","随机播放"];
+			var m = 0;
+		    circle.innerHTML = circleType[m];
+		    circle.addEventListener("click",function(){
+		    	m++;
+		    	if(m &lt; 3){
+		    		circle.innerHTML = circleType[m];
+		    	}else{
+		    		m = 0;
+		    		circle.innerHTML = circleType[m];
+		    	}
+		    	
+		    })
+		</pre>
+		<h3>6.下一曲目</h3>
+		<pre>
+			//下一曲目
+			nextVideo.addEventListener("click",function(){
+				if(circle.innerHTML == "重复播放"){
+					n = n;
+				}else if(circle.innerHTML == "列表循环"){
+					n++;
+					if(n == videoList.length){
+						n=0;
+					}
+				}else if(circle.innerHTML == "随机播放"){
+					n = Math.floor(Math.random()*videoList.length); //播放进度跟随变化
+				}
+				video1.src = videoList[n].src;
+				video1.poster = videoList[n].poster;
+				playreset();
+				videoBtn.addEventListener("click", viedoControl);
+			});
+			//重置
+			function playreset(){
+				video1.currentTime = 0;
+				video1.buffered = 0;
+				videoBtn.innerHTML = "播放";
+				proBar.style.width = 0 + "px";
+			}
+		</pre>
+		<h3>7.播放列表</h3>
+		<pre>
+			//生成播放列表
+			function List(){
+				var str = "&lt;ul>";
+				for (var i = 0 ;i &lt; videoList.length ; i++) {
+					str+="&lt;li>"+videoList[i].src.substr(4).split(".")[0]+"&lt;/li>"
+				}
+				str+="&lt;/ul>";
+				return str;
+			}
+			listnum.innerHTML = List();
+			
+			//播放列表项目选择
+			var videoNum = document.getElementsByTagName("li");
+			for (var j = 0;j &lt; videoNum.length;j++) {
+				videoNum[j].cool = j;
+				videoNum[j].onclick = function(){
+					playreset();
+					video1.src = videoList[this.cool].src;
+					video1.poster = videoList[this.cool].poster;
+					n = this.cool;
+				}
+			}
+		</pre>
+		<h3>效果图</h3>
+		<img src=""/>
+    <h3>scroll</h3>
+    <a href = "20161220scroll.html">scroll示例</a>		
+</div>
+	</body>
+</html>
+
