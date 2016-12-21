@@ -30,9 +30,9 @@ function init(){
 	cH = canvas.height;
 	
     ctx = canvas.getContext("2d");
-	bg = addImg("img/bg.png");
-	ball = addImg("img/ball.png");
-	board = addImg("img/board.png");
+	bg = addImg("http://image18.poco.cn/mypoco/myphoto/20161221/16/18418598620161221162811020_640.jpg?1000x800_130");
+	ball = addImg("http://image18.poco.cn/mypoco/myphoto/20161221/16/18418598620161221162736068_640.jpg?50x50_130");
+	board = addImg("http://image18.poco.cn/mypoco/myphoto/20161221/16/18418598620161221162754057_640.jpg?150x20_130");
 	creatBrick();
 	st = setInterval(updateCanvas,1000/60);//60帧
 }
@@ -58,8 +58,8 @@ function trace(msg){
 //生成砖块
 function creatBrick(){
 	for (var i = 0;i<6;i++) {
-		for (var j = 0;j<4;j++) {
-			var item = addImg("img/1.png");
+		for (var j = 0;j < 4;j++) {
+			var item = addImg("http://image18.poco.cn/mypoco/myphoto/20161221/16/18418598620161221162715049_640.jpg?150x50_130");
 			var x = i * (brickW+10);
 			var y = j * (brickH+5)+30;
 			var obj = {item:item,x:x,y:y}
