@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			table{
+				background: black;
+			}
+			td{
+				background: #fff;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<button id="btn">点我显示数据</button>
+		<div id="div"><table id="nametable" >
+			
+		</table></div>
+		<!--<input type="file" name="" id="" value="选择文件" />-->
+		<script type="text/javascript">
+			var btn = document.getElementById("btn");
+			var div = document.getElementById("div");
+            var nametable = document.getElementById("nametable");
+			function showData() {
+				var arr = JSON.parse(xhr.response);//将json数据转换成js格式
+				var l = arr.length;
+//				var str = "<table>";
+//				for(var i = 0; i < l; i++) {
+//					var o = arr[i];
+//					var s = "name:" + o.name + "   " + "gender:" + o.sex + "    " + "age:" +
+//						o.age + "college" + o.college;
+//					str += "<tr><td>" + s + "</td></tr>";
+//				}
+//				str += "</table>";
+//				div.innerHTML = str;
+               for (var i = 0 ; i < l ;i++) {
+               	    var tr = nametable.insertRow();
+               	    for (var j in arr[i] ) {
+               	    	var td = tr.insertCell();
+               	    	td.innerHTML = arr[i][j];
+               	    }
+               }
+			}
+
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", "name.json");//规定请求的类型、URL 以及是否异步处理请求。
+			xhr.send();//将请求发送到服务器。
+
+			//			xhr.onload = function(msg) {
+
+			xhr.onreadystatechange = function(msg) {
+				if(xhr.readyState == 4) {  //完全接收
+					if(xhr.status == 200) {  //正常状态
+						btn.onclick = function() {
+							showData();
+						}
+					}
+				}
+			}
+
+			
+
+			//			var xhr = new XMLHttpRequest();
+			//			//			if(xhr){
+			//			//				
+			//			//			}else{
+			//			//				xhr = new ActiveXObject("Microsoft.XMLHTTP")
+			//			//			}
+			//			//			xhr.open("GET","www.expeml.com");
+			//			//			xhr.send(null);
+			//
+			//			//          xhr.onreadystatechange = function(msg){
+			//			//          	if(xhr.readyState == 4){
+			//			//          		if(xhr.status == 200){
+			//			//          			console.log(msg.response);
+			//			//          		}
+			//			//          	}
+			//			//          }
+			//			xhr.open("GET", "ajax/ajax.json");
+			//			xhr.send();
+						          xhr.onerror = function(error){
+						          	console.log(error);
+						          }  //服务器有错时发生
+			//			xhr.onload = function(msg) {
+			//				div.innerHTML = xhr.response;
+			//			}
+		</script>
+	</body>
+
+</html>
