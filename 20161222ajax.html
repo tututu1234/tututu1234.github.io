@@ -59,6 +59,7 @@
 				if(xhr.readyState == 4) {  //完全接收
 					if(xhr.status == 200) {  //正常状态
 						btn.onclick = function() {
+							nametable.innerHTML = "";
 							showData();
 						}
 					}
