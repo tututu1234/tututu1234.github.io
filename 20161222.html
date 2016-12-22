@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{padding: 0;margin: 0;font-family: "微软雅黑";}
+			h1{width: auto;height: 100px;line-height: 100px;}
+			h3{width: auto;height: 60px;line-height: 60px;}
+			pre{width: 800px;height: auto;background:lightyellow;border: 2px solid grey;border-radius: 10px;margin-top: 30px;margin-bottom: 30px;padding: 5px;}
+		</style>
+	</head>
+	<body>
+	 <div style="width:1000px;height: auto;margin: auto;">
+	 	<h1>ajax</h1>
+	 	<h3>1.ajax简介</h3>
+	 	<p>AJAX = 异步 JavaScript 和 XML。</p>
+        <p>AJAX 是一种用于创建快速动态网页的技术。</p>
+        <p>通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</p>
+        <h3>2.XHR创建对象</h3>
+        <p>XMLHttpRequest 用于在后台与服务器交换数据。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</p>
+        <p>创建 XMLHttpRequest 对象的语法：</p>
+        <pre>
+        	var xmlhttp = new XMLHttpRequest();
+        </pre>
+        <h3>3.兼容</h3>
+        <p>为了应对所有的现代浏览器，包括 IE5 和 IE6，请检查浏览器是否支持 XMLHttpRequest 对象。如果支持，则创建 XMLHttpRequest 对象。如果不支持，则创建 ActiveXObject ：</p>
+        <pre>
+        	var xmlhttp;
+            if (window.XMLHttpRequest)
+              {// code for IE7+, Firefox, Chrome, Opera, Safari
+              xmlhttp=new XMLHttpRequest();
+              }
+            else
+              {// code for IE6, IE5
+              xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+              }
+        </pre>
+        <h3>4.XHR请求</h3>
+        <p>如需将请求发送到服务器，我们使用 XMLHttpRequest 对象的 open() 和 send() 方法：</p>
+        <pre>
+        	xmlhttp.open("GET","test1.txt",true);
+            xmlhttp.send();
+        </pre>
+        <p>xmlhttp.open(method,url,async):规定请求的类型、URL 以及是否异步处理请求。method：请求的类型；GET 或 POST
+url：文件在服务器上的位置
+async：true（异步）或 false（同步）</p>
+       <p>xmlhttp.send(String):将请求发送到服务器。string：仅用于 POST 请求</p>
+       <h5>GET 还是 POST？</h5>
+       <p>与 POST 相比，GET 更简单也更快，并且在大部分情况下都能用。
+       <p>然而，在以下情况中，请使用 POST 请求：</p>
+       <p>无法使用缓存文件（更新服务器上的文件或数据库）</p>
+       <p>向服务器发送大量数据（POST 没有数据量限制）</p>
+       <p>发送包含未知字符的用户输入时，POST 比 GET 更稳定也更可靠</p>
+       <h3>5.XHR响应</h3>
+       <p>如需获得来自服务器的响应，请使用 XMLHttpRequest 对象的 responseText 或 responseXML 属性</p>
+       <p>responseText	获得字符串形式的响应数据。</p>
+       <p>responseXML	获得 XML 形式的响应数据。</p>
+       <h3>6.XHR readyState</h3>
+       <p>当请求被发送到服务器时，我们需要执行一些基于响应的任务。每当 readyState 改变时，就会触发 onreadystatechange 事件。
+readyState 属性存有 XMLHttpRequest 的状态信息。</p>
+       <p>下面是 XMLHttpRequest 对象的三个重要的属性：</p>
+       <img src="http://image18.poco.cn/mypoco/myphoto/20161222/16/18418598620161222164621034_640.jpg?713x265_120"/>
+       <p>当 readyState 等于 4 且状态为 200 时，表示响应已就绪：</p>
+       <pre>
+       	xmlhttp.onreadystatechange=function()
+        {
+          if (xmlhttp.readyState==4 && xmlhttp.status==200)
+         {
+           document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+         }
+        }
+       </pre>
+       
+	 </div>
+	</body>
+</html>
+
+
