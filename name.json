@@ -1,0 +1,63 @@
+  [
+                {
+					"name": "name",
+					"sex": "gender",
+					"age": "age",
+					"phoneNumber": "phoneNumber",
+					"university": "university",
+					"major": "major",
+					"college": "college",
+					"入学年份": "joining school"
+				},
+				{
+					"name": "张三",
+					"sex": "男",
+					"age": "20",
+					"phoneNumber": "110120130140",
+					"university": "浙江大学",
+					"major": "历史专业",
+					"college": "淘宝学院",
+					"入学年份": "1998"
+				},
+				{
+					"name": "李四",
+					"sex": "女",
+					"age": "10",
+					"phoneNumber": "190120030140",
+					"university": "杭州大学",
+					"major": "软件工程",
+					"college": "阿里学院",
+					"入学年份": "1989"
+				},
+				{
+					"name": "贾轩",
+					"sex": "男",
+					"age": "29",
+					"phoneNumber": "1234320140",
+					"university": "温州大学",
+					"major": "电子信息工程",
+					"college": "职业学院",
+					"入学年份": "1967"
+				},
+				{
+					"name": "赵天成",
+					"sex": "男",
+					"age": "24",
+					"phoneNumber": "123424140",
+					"university": "浙江大学",
+					"major": "通信工程",
+					"college": "电子通信学院",
+					"入学年份": "2013"
+				},
+				{
+					"name": "殷永贵",
+					"sex": "男",
+					"age": "58",
+					"phoneNumber": "113242340140",
+					"university": "中国大学",
+					"major": "大傻逼",
+					"college": "逗逼学院",
+					"入学年份": "1999"
+				}
+
+			]
