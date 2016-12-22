@@ -42,6 +42,9 @@
                	    for (var j in arr[i] ) {
                	    	var td = tr.insertCell();
                	    	td.innerHTML = arr[i][j];
+		        if (i%2 != 0) {
+               	    	td.style.background = "skyblue";
+               	        }
                	    }
                }
 			}
