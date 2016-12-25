@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{padding: 0;margin: 0;font-family: "微软雅黑";}
+			h1{width: auto;height: 100px;line-height: 100px;}
+			h3{width: auto;height: 60px;line-height: 60px;}
+			pre{width: 800px;height: auto;background:lightyellow;border: 2px solid grey;border-radius: 10px;margin-top: 30px;margin-bottom: 30px;padding: 5px;}
+		</style>
+	</head>
+	<body>
+		<div style="width:1000px;height: auto;margin: auto;">
+			<h1>Javascript面向对象编程（二）：构造函数的继承</h1>
+			<p>比如，现在有一个"动物"对象的构造函数。</p>
+			<pre>
+	function Animal(){
+　　　　this.species = "动物";
+　　}
+			</pre>
+			<p>还有一个"猫"对象的构造函数。</p>
+			<pre>
+	function Cat(name,color){
+　　　　this.name = name;
+　　　　this.color = color;
+　　}
+			</pre>
+			<p>怎样才能使"猫"继承"动物"呢？</p>
+			<h3>一、 构造函数绑定</h3>
+			<p>第一种方法也是最简单的方法，使用call或apply方法，将父对象的构造函数绑定在子对象上，即在子对象构造函数中加一行：</p>
+			<pre>
+	function Cat(name,color){
+　　　　Animal.apply(this, arguments);
+　　　　this.name = name;
+　　　　this.color = color;
+　　}
+　　var cat1 = new Cat("大毛","黄色");
+　　alert(cat1.species); // 动物
+			</pre>
+			<h3>二、 prototype模式</h3>
+			<p>第二种方法更常见，使用prototype属性。如果"猫"的prototype对象，指向一个Animal的实例，那么所有"猫"的实例，就能继承Animal了。</p>
+			<pre>
+	Cat.prototype = new Animal();
+　　Cat.prototype.constructor = Cat;
+　　var cat1 = new Cat("大毛","黄色");
+　　alert(cat1.species); // 动物
+			</pre>
+			<p>代码的第一行，我们将Cat的prototype对象指向一个Animal的实例。</p>
+			<pre>
+	Cat.prototype = new Animal();
+			</pre>
+			<p>它相当于完全删除了prototype 对象原先的值，然后赋予一个新值。但是，第二行又是什么意思呢？</p>
+			<pre>Cat.prototype.constructor = Cat;</pre>
+			<p>原来，任何一个prototype对象都有一个constructor属性，指向它的构造函数。如果没有"Cat.prototype = new Animal();"这一行，Cat.prototype.constructor是指向Cat的；加了这一行以后，Cat.prototype.constructor指向Animal。</p>
+			<pre>
+				alert(Cat.prototype.constructor == Animal); //true
+			</pre>
+			<p>更重要的是，每一个实例也有一个constructor属性，默认调用prototype对象的constructor属性。</p>
+			<pre>
+				alert(cat1.constructor == Cat.prototype.constructor); // true
+			</pre>
+			<p>因此，在运行"Cat.prototype = new Animal();"这一行之后，cat1.constructor也指向Animal！</p>
+			<pre>
+				alert(cat1.constructor == Animal); // true
+			</pre>
+			<p>这显然会导致继承链的紊乱（cat1明明是用构造函数Cat生成的），因此我们必须手动纠正，将Cat.prototype对象的constructor值改为Cat。这就是第二行的意思。这是很重要的一点，编程时务必要遵守。下文都遵循这一点，即如果替换了prototype对象，</p>
+			<p>o.prototype = {};</p>
+			<p>那么，下一步必然是为新的prototype对象加上constructor属性，并将这个属性指回原来的构造函数。</p>
+			<p>o.prototype.constructor = o;</p>
+			<h3>三、 直接继承prototype</h3>
+			<p>第三种方法是对第二种方法的改进。由于Animal对象中，不变的属性都可以直接写入Animal.prototype。所以，我们也可以让Cat()跳过 Animal()，直接继承Animal.prototype。
+现在，我们先将Animal对象改写：</p>
+            <pre>
+    function Animal(){ }
+　　Animal.prototype.species = "动物";
+            </pre>
+            <p>然后，将Cat的prototype对象，然后指向Animal的prototype对象，这样就完成了继承。</p>
+            <pre>
+    Cat.prototype = Animal.prototype;
+　　Cat.prototype.constructor = Cat;
+　　var cat1 = new Cat("大毛","黄色");
+　　alert(cat1.species); // 动物
+            </pre>
+            <p>与前一种方法相比，这样做的优点是效率比较高（不用执行和建立Animal的实例了），比较省内存。缺点是 Cat.prototype和Animal.prototype现在指向了同一个对象，那么任何对Cat.prototype的修改，都会反映到Animal.prototype。</p>
+		    <h3></h3>
+		</div>
+	</body>
+</html>
