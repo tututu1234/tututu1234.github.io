@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery 事件</title>
+    <script src="../lib/jquery-3.1.0.min.js"></script>
+    <style>
+        body{
+            height:3000px;
+        }
+        #click1{
+            border:1px solid chartreuse;
+        }
+        span{
+            cursor: pointer;
+        }
+        .class1{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+<span>浏览器窗口的大小改变了：</span><span id="span">0</span>
+
+<br>
+
+<span id="click1">快点点我</span>
+
+<br>
+
+<input type="text" id="inpt" value="我是值">
+
+
+<br>
+<br>
+
+<input type="text" id="inpt1" placeholder="输入一">
+<input type="text" id="inpt2" placeholder="输入二keydown">
+<input type="text" id="inpt3" placeholder="输入三keyup">
+<input type="text" id="inpt4" placeholder="输入四keypress">
+
+
+<br>
+<br>
+
+<span id="sp1">on方法</span>
+
+<br>
+<br>
+<span id="sp2">bind方法</span>
+<br>
+<br>
+<span id="sp3">trigger方法</span>
+<br>
+<br>
+<span id="sp4">live方法</span>
+<br>
+<br>
+<div id="ds">
+    <span>live替代方法演示</span>
+</div>
+<script>
+
+    $(window).resize(function () {
+        $("#span").text(parseInt($("#span").text()) + 1);
+    });
+
+
+    $(window).scroll(function () {
+        $("#span").text(parseInt($("#span").text()) + 1);
+    });
+
+
+    $(function () {
+        $("#click1").click(function () {
+            $("#click1").toggleClass("class1");
+        });
+
+        $("#click1").hover(function () {
+            $("#click1").toggleClass("class1",true);
+        },function () {
+            $("#click1").toggleClass("class1",false);
+        });
+
+        $("#inpt").focus(function () {
+            $("#inpt").toggleClass("class1",true);
+        });
+        $("#inpt").blur(function () {
+            $("#inpt").toggleClass("class1",false);
+        });
+
+        $("#inpt2").keydown(function () {
+            $("#inpt2").toggleClass("class1");
+        });
+        $("#inpt3").keyup(function () {
+            $("#inpt3").toggleClass("class1");
+        });
+        $("#inpt4").keypress(function () {
+            $("#inpt4").toggleClass("class1");
+        });
+
+
+
+        $("#sp1").on("click",function () {
+            $("#sp1").toggleClass("class1");
+        });
+        $("#sp2").bind("click",function () {
+            $("#sp2").toggleClass("class1");
+        });
+        $("#sp3").click(function () {
+            alert("我要触发trigger事件了");
+            $("#sp1").trigger("click");
+        });
+        $("#sp4").click(function () {
+            $("#ds").append('<span onclick="alert(123)";>我是来代替live的</span>');
+        });
+    });
+</script>
+</body>
+</html>
