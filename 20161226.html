@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{padding: 0;margin: 0;font-family: "微软雅黑";}
+			h1{width: auto;height: 100px;line-height: 100px;}
+			h3{width: auto;height: 60px;line-height: 60px;}
+			pre{width: 800px;height: auto;background:lightyellow;border: 2px solid grey;border-radius: 10px;margin-top: 30px;margin-bottom: 30px;padding: 5px;}
+		</style>
+	</head>
+	<body>
+	 <div style="width:1000px;height: auto;margin: auto;">
+	 	<h1>jQuery</h1>
+	 	<h3>1.jQuery选择器</h3>
+	 	<pre>
+&lt;!DOCTYPE html>
+&lt;html>
+	&lt;head>
+		&lt;meta charset="UTF-8">
+		&lt;title>&lt;/title>
+		&lt;style type="text/css">
+			li{
+				list-style: none;
+				height: 50px;
+				width: 80px;
+				border: 1px solid darkgreen;
+				text-align: center;
+			}
+			span{
+				border:1px solid darkred;
+				cursor: pointer;
+			}
+			.cssClass{
+				background: blueviolet;
+			}
+		&lt;/style>
+		
+	&lt;/head>
+	&lt;body>
+		&lt;ul>
+			&lt;li id="li1">id选择器 #id&lt;/li>
+			&lt;li class="li2">类选择器 .class&lt;/li>
+		&lt;/ul>
+		&lt;input type="text" name="ipt1" id="" value="" />
+		&lt;input type="date" name="" id="" value="" />
+		&lt;input type="text" name="ipt2" id="" value="" />
+		&lt;br />
+		&lt;span id="id">id选择器&lt;/span>
+		&lt;span class="class">class选择器&lt;/span>
+		&lt;span id="btn1">标签选择器&lt;/span>
+		&lt;span id="btn2">通配选择器&lt;/span>
+		&lt;span id="btn3">组选择器&lt;/span>
+		&lt;span id="btn4">后代选择器&lt;/span>
+		&lt;span id="btn5">过滤选择器&lt;/span>
+		&lt;span id="btn6">属性选择器&lt;/span>
+		&lt;script src="lib/jquery-3.1.1.min.js" >&lt;/script>
+		&lt;script type="text/javascript">
+			$(document).ready(function(){
+				//id 
+				$("#id").click(function(){
+					$("#li1").toggleClass("cssClass");
+				})
+				//class
+				$(".class").click(function(){
+					$(".li2").toggleClass("cssClass");
+				})
+				//tag
+				$("#btn1").click(function(){
+					$("li:first-child").toggleClass("cssClass");
+				})
+				//*
+				$("#btn2").click(function(){
+					$("*").toggleClass("cssClass");
+				})
+				//组
+				$("#btn3").click(function(){
+					$("ul,span").toggleClass("cssClass");
+				})
+				//后代
+				$("#btn4").click(function(){
+					$("ul li").toggleClass("cssClass");
+				})
+				//过滤
+				$("#btn5").click(function(){
+					$("ul li:first").toggleClass("cssClass");
+				})
+				//属性
+				$("#btn6").click(function(){
+					$("input[name = ipt1]").toggleClass("cssClass");
+				})
+			})
+		&lt;/script>
+	&lt;/body>
+&lt;/html>
+
+	 	</pre>
+	 </div>
+		
+	</body>
+</html>
+
+
