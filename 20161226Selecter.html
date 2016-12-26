@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			li{
+				list-style: none;
+				height: 50px;
+				width: 80px;
+				border: 1px solid darkgreen;
+				text-align: center;
+			}
+			span{
+				border:1px solid darkred;
+				cursor: pointer;
+			}
+			.cssClass{
+				background: blueviolet;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<ul>
+			<li id="li1">id选择器 #id</li>
+			<li class="li2">类选择器 .class</li>
+		</ul>
+		<input type="text" name="ipt1" id="" value="" />
+		<input type="date" name="" id="" value="" />
+		<input type="text" name="ipt2" id="" value="" />
+		<br />
+		<span id="id">id选择器</span>
+		<span class="class">class选择器</span>
+		<span id="btn1">标签选择器</span>
+		<span id="btn2">通配选择器</span>
+		<span id="btn3">组选择器</span>
+		<span id="btn4">后代选择器</span>
+		<span id="btn5">过滤选择器</span>
+		<span id="btn6">属性选择器</span>
+		<script src="lib/jquery-3.1.1.min.js" ></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				//id 
+				$("#id").click(function(){
+					$("#li1").toggleClass("cssClass");
+				})
+				//class
+				$(".class").click(function(){
+					$(".li2").toggleClass("cssClass");
+				})
+				//tag
+				$("#btn1").click(function(){
+					$("li:first-child").toggleClass("cssClass");
+				})
+				//*
+				$("#btn2").click(function(){
+					$("*").toggleClass("cssClass");
+				})
+				//组
+				$("#btn3").click(function(){
+					$("ul,span").toggleClass("cssClass");
+				})
+				//后代
+				$("#btn4").click(function(){
+					$("ul li").toggleClass("cssClass");
+				})
+				//过滤
+				$("#btn5").click(function(){
+					$("ul li:first").toggleClass("cssClass");
+				})
+				//属性
+				$("#btn6").click(function(){
+					$("input[name = ipt1]").toggleClass("cssClass");
+				})
+			})
+		</script>
+	</body>
+</html>
