@@ -14,10 +14,9 @@
 	 <div style="width:1000px;height: auto;margin: auto;">
 	 	<h1>jQuery</h1>
 	 	<h3>1.jQuery选择器</h3>
-		 <img src = "http://image18.poco.cn/mypoco/myphoto/20161226/16/18418598620161226161523022_640.jpg?528x444_120">
 	 	<pre>
-        &lt;!DOCTYPE html>
-        &lt;html>
+    &lt;!DOCTYPE html>
+    &lt;html>
 	&lt;head>
 		&lt;meta charset="UTF-8">
 		&lt;title>&lt;/title>
@@ -94,13 +93,140 @@
 			})
 		&lt;/script>
 	&lt;/body>
-        &lt;/html>
+    &lt;/html>
 
 	 	</pre>
-		 <h5><a href = "20161226Selecter.html">效果展示</a></h5> 
-		</div>
+	 	<h5><a href="20161226Selecter.html">效果展示</a></h5>
+	 	<h3>2.jQuery事件</h3>
+	 	<pre>
+&lt;!DOCTYPE html>
+&lt;html lang="en">
+&lt;head>
+    &lt;meta charset="UTF-8">
+    &lt;title>JQuery 事件&lt;/title>
+    &lt;script src="../lib/jquery-3.1.0.min.js">&lt;/script>
+    &lt;style>
+        body{
+            height:3000px;
+        }
+        #click1{
+            border:1px solid chartreuse;
+        }
+        span{
+            cursor: pointer;
+        }
+        .class1{
+            background-color: blue;
+        }
+    &lt;/style>
+&lt;/head>
+&lt;body>
+&lt;span>浏览器窗口的大小改变了：&lt;/span>&lt;span id="span">0&lt;/span>
+
+&lt;br>
+
+&lt;span id="click1">快点点我&lt;/span>
+
+&lt;br>
+
+&lt;input type="text" id="inpt" value="我是值">
+
+
+&lt;br>
+&lt;br>
+
+&lt;input type="text" id="inpt1" placeholder="输入一">
+&lt;input type="text" id="inpt2" placeholder="输入二keydown">
+&lt;input type="text" id="inpt3" placeholder="输入三keyup">
+&lt;input type="text" id="inpt4" placeholder="输入四keypress">
+
+
+&lt;br>
+&lt;br>
+
+&lt;span id="sp1">on方法&lt;/span>
+
+&lt;br>
+&lt;br>
+&lt;span id="sp2">bind方法&lt;/span>
+&lt;br>
+&lt;br>
+&lt;span id="sp3">trigger方法&lt;/span>
+&lt;br>
+&lt;br>
+&lt;span id="sp4">live方法&lt;/span>
+&lt;br>
+&lt;br>
+&lt;div id="ds">
+    &lt;span>live替代方法演示&lt;/span>
+&lt;/div>
+&lt;script>
+
+    $(window).resize(function () {
+        $("#span").text(parseInt($("#span").text()) + 1);
+    });
+
+
+    $(window).scroll(function () {
+        $("#span").text(parseInt($("#span").text()) + 1);
+    });
+
+
+    $(function () {
+        $("#click1").click(function () {
+            $("#click1").toggleClass("class1");
+        });
+
+        $("#click1").hover(function () {
+            $("#click1").toggleClass("class1",true);
+        },function () {
+            $("#click1").toggleClass("class1",false);
+        });
+
+        $("#inpt").focus(function () {
+            $("#inpt").toggleClass("class1",true);
+        });
+        $("#inpt").blur(function () {
+            $("#inpt").toggleClass("class1",false);
+        });
+
+        $("#inpt2").keydown(function () {
+            $("#inpt2").toggleClass("class1");
+        });
+        $("#inpt3").keyup(function () {
+            $("#inpt3").toggleClass("class1");
+        });
+        $("#inpt4").keypress(function () {
+            $("#inpt4").toggleClass("class1");
+        });
+
+
+
+        $("#sp1").on("click",function () {
+            $("#sp1").toggleClass("class1");
+        });
+        $("#sp2").bind("click",function () {
+            $("#sp2").toggleClass("class1");
+        });
+        $("#sp3").click(function () {
+            alert("我要触发trigger事件了");
+            $("#sp1").trigger("click");
+        });
+        $("#sp4").click(function () {
+            $("#ds").append('&lt;span onclick="alert(123)";>我是来代替live的&lt;/span>');
+        });
+    });
+&lt;/script>
+&lt;/body>
+&lt;/html>
+	 	</pre>
+	 	<h5><a href="20161226event.html">效果展示</a></h5>
+	 </div>
 		
 	</body>
 </html>
+
+
+
 
 
