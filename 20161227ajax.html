@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+		</style>
+	</head>
+
+	<body>
+		<button id="btn">click</button>
+		<div id="div"></div>
+		<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				//				$("#btn").click(function(){
+				//					$("#div").hide();//显示隐藏
+				//					$("#div").slideUp();
+				//					$("#div").slideToggle();//滑动
+				//                  $("#div").slideDown(2000);
+				//					$("#div").fadeToggle(2000);//淡入淡出
+
+				$(function() {
+					$("#btn").click(function() {
+						var _data = {};
+						_data.pageNum = 2;
+						_data.pageSize = 20;
+						$.ajax({
+							type: "get",
+							url: "http://www.hemijiaoyu.com/service/searchApply",
+							dataType: "JSON",
+							data: "_data",
+							success: function(msg) {
+//								console.log(msg);
+								var arr = msg.list;
+								var str = "<table border='1px'>"
+								for (var i = 0 ;i<arr.length;i++) {
+									str+="<tr>";
+									var obj = arr[i];
+									for(var j in obj){
+//										console.log(j+":"+obj[j])
+                                        str+="<td>"+obj[j]+"</td>"
+									}
+									str+="</tr>";
+								}
+								str+="</table>"
+								$("#div").html(str);
+							},
+							error: function(error) {
+								console.log("fail")
+							}
+
+						});
+					})
+				})
+
+				//				})
+			})
+		</script>
+	</body>
+
+</html>
