@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.cssClass{
+				background: greenyellow;
+			}
+		</style>
+	</head>
+	<body>
+		<button id="btn">click</button>
+		<div id="div" style="border:1px solid blue ;width: 300px;height: 50px;">i am div</div>
+		<img src="" id="img"/>
+		<script src="lib/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#btn").click(function(){
+//					$("#img").attr("src","img/ball.png");
+                    console.log($("#div").html("hello"));//innerHTML
+                    console.log($("#div").val("hello"));//input内value值
+                    console.log($("#div").text("<span>hello</span>"));//innerText
+                    console.log($("#div").html("<span>hello</span>"));
+                    console.log($("#div").append("<span>hahaha</span>"));//插入
+                    console.log($("<ul><li>hello</li></ul>").appendTo("#div"));
+                    console.log($("#div").prepend("<ul><li>hello</li></ul>"));//向前插入
+//                  console.log($("#div").empty());//清空
+//                  console.log($("#div").remove());//移除
+//                  console.log($("#div").clone());
+                    console.log($("#div").addClass("cssClass"));
+                    console.log($("#div").css({"background":"#8B0000","color":"green"}));//添加css样式
+                    console.log($("#div").css("background",function(_index,_value){
+                    	return _value = "blue";
+                    }));
+                    console.log($("#div").innerHeight())//内高度
+                    console.log($("#div").outerHeight())//外高度
+                    console.log($("#div").innerWidth())
+                    console.log($("#div").outerWidth())
+                    $("#div").css({"position":"absolute","top":"100px","left":"100px"})//定位
+				})
+			})
+			
+		</script>
+	</body>
+	
+</html>
