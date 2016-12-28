@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			table {
+				text-align: center;
+			}
+			
+			tr {
+				display: block;
+				border-top: 1px solid black;
+			}
+			
+			tr:hover {
+				background: gray;
+			}
+			
+			thead {
+				background: gray;
+			}
+			
+			td,
+			th {
+				width: 150px;
+				height: 30px;
+			}
+			
+			#mask {
+				width: 100%;
+				height: 100%;
+				background: rgba(100, 100, 100, 0.8);
+				margin: 0 auto;
+				position: fixed;
+				/*top: 10%;*/
+				z-index: 999;
+				display: none;
+			}
+			
+			#content {
+				width:auto;
+				position: absolute;
+			}
+			#info{
+				width: 90%;
+				height: 80%;
+				background: white;
+				position: relative;
+				top:5%;
+				left: 5%;
+				border:1px solid darkslategray;
+			}
+			#shut{
+				width: 20px;
+				height: auto;
+				position: absolute;
+				top: 0;
+				right: 0;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="mask">
+			<h1 style="text-align: center;">禾米科技免费培训申请表</h1>
+			<div id="info">
+				<h3 id="shut">X</h3>
+				<h3 style="text-align: center;">详细信息</h3>
+				姓名:<input type="text" id="name" value="" />
+				性别:<input type="text" id="sex" value="" />
+				出生年月:<input type="text" id="birthday" value="" />
+				<br />
+				手机号码:<input type="text" id="mobile" value="" />
+				政治面貌:<input type="text" id="political" value="" />
+				QQ:<input type="text" id="qq" value="" />
+				<br />
+				学院:<input type="text" id="college" value="" />
+				系:<input type="text" id="faculty" value="" />
+				专业:<input type="text" id="major" value="" />
+				<br />
+				父亲姓名:<input type="text" id="fatherName" value="" />
+				父亲电话:<input type="text" id="fatherMobile" value="" />
+				<br />
+				母亲姓名:<input type="text" id="motherName" value="" />
+				母亲电话:<input type="text" id="motherMobile" value="" />
+				<br />
+				家庭住址:<input type="text" id="address" value="" />
+				<br />
+				信息来源:<input type="text" id="source" value="" />
+				<br />
+				专业能力描述:<input type="text" id="majorMemo" value="" />
+				<br />
+				自我评级描述:<input type="text" id="selfMemo" value="" />
+			</div>
+		</div>
+		<div id="content">
+			<button id="btn">click</button>
+			<input type="text" id="searchByname" />
+			<div id="div" style="display: none;"></div>
+		</div>
+
+		<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$(function() {
+					$("#btn").click(function() {
+						var _data = {};
+						_data.pageNum = 1;
+						_data.pageSize = 20;
+						var $name = $("#searchByname").val();
+						if($name != "") {
+							_data.name = $name;
+						}
+						$.ajax({
+							type: "get",
+							url: "http://www.hemijiaoyu.com/service/searchApply",
+							dataType: "JSON",
+							data: _data,
+							success: function(msg) {
+								//								console.log(msg);
+								var arr = msg.list;
+								console.log(arr[0])
+								var str = "<table><thead><th>姓名</th><th>性别</th><th>出生年月</th><th>手机号码</th><th>政治面貌</th><th>QQ</th><th>学院</th><th>系</th><th>专业</th><th>申请时间</th></thead>"
+								for(var i = 0; i < arr.length; i++) {
+									str += "<tr id= "+i+">";
+									var obj = arr[i];
+									//									for(var j in obj){
+									////										console.log(j+":"+obj[j])
+									//                                      str+="<td>"+obj[j]+"</td>"
+									//									}
+									str += "<td>" + obj.name + "</td>";
+									str += "<td>" + obj.sex + "</td>";
+									str += "<td>" + obj.birthday + "</td>";
+									str += "<td>" + obj.mobile + "</td>";
+									str += "<td>" + obj.political + "</td>";
+									str += "<td>" + obj.qq + "</td>";
+									str += "<td>" + obj.college + "</td>";
+									str += "<td>" + obj.faculty + "</td>";
+									str += "<td>" + obj.major + "</td>";
+									str += "<td>" + obj.createTime + "</td>";
+									str += "</tr>";
+								}
+								str += "</table>"
+								$("#div").html(str).slideDown();
+								$("tr").dblclick(function(e){
+									var obj11 = arr[e.currentTarget.id];
+									$("#name").val(obj11.name);
+									$("#sex").val(obj11.sex);
+									$("#birthday").val(obj11.birthday);
+									$("#mobile").val(obj11.mobile);
+									$("#political").val(obj11.political);
+									$("#qq").val(obj11.qq);
+									$("#college").val(obj11.college);
+									$("#faculty").val(obj11.faculty);
+									$("#major").val(obj11.major);
+									$("#fatherName").val(obj11.fatherName);
+									$("#fatherMobile").val(obj11.fatherMobile);
+									$("#motherName").val(obj11.matherName);
+									$("#motherMobile").val(obj11.matherMobile);
+									$("#address").val(obj11.homeAddress);
+									$("#source").val(obj11.source);
+									$("#majorMemo").val(obj11.majorMemo);
+									$("#selfMemo").val(obj11.selfMemo);
+//                                  for(var j in obj11){
+//                                  	$(j).val(obj11[j])
+//                                  }
+									$("#mask").fadeIn();
+								})
+								$("#shut").click(function(){
+									$("#mask").fadeOut()
+								})
+							},
+							error: function(error) {
+								console.log("fail")
+							}
+
+						});
+					})
+				})
+
+				//				})
+			})
+		</script>
+	</body>
+
+</html>
