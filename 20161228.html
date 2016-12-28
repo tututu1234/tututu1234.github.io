@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{padding: 0;margin: 0;font-family: "微软雅黑";}
+			h1{width: auto;height: 100px;line-height: 100px;}
+			h3{width: auto;height: 60px;line-height: 60px;}
+			pre{width: 800px;height: auto;background:lightyellow;border: 2px solid grey;border-radius: 10px;margin-top: 30px;margin-bottom: 30px;padding: 5px;}
+		</style>
+	</head>
+	<body>
+	 <div style="width:1000px;height: auto;margin: auto;">
+	 	<h1>ajax</h1>
+	 	<h3>ajax查询</h3>
+		<p>1.先获取接口文档或者接口数据</p>
+		<p>2.获取所有数据</p>
+		<p>a.需要给服务器传递参数</p>
+		<p>b.跨域：JSONP callback：非XMLhttpRequest对象交互，通过script标签交互</p>
+		<p>3.解析从服务器获取到的数据</p>
+		<p>a.解析数据过程中：脱离后台交互</p>
+		<p>b.显示数据：界面布局及其他</p>
+		<p>4.其他功能数据</p>
+		<p>a.需要的功能：查询功能（数据过滤，由服务器完成，）</p>
+		<p>b.重新规划数据</p>
+		<pre>
+&lt;!DOCTYPE html>
+&lt;html>
+
+	&lt;head>
+		&lt;meta charset="UTF-8">
+		&lt;title>&lt;/title>
+		&lt;style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			table {
+				text-align: center;
+			}
+			
+			tr {
+				display: block;
+				border-top: 1px solid black;
+			}
+			
+			tr:hover {
+				background: gray;
+			}
+			
+			thead {
+				background: gray;
+			}
+			
+			td,
+			th {
+				width: 150px;
+				height: 30px;
+			}
+			
+			#mask {
+				width: 100%;
+				height: 100%;
+				background: rgba(100, 100, 100, 0.8);
+				margin: 0 auto;
+				position: fixed;
+				/*top: 10%;*/
+				z-index: 999;
+				display: none;
+			}
+			
+			#content {
+				width:auto;
+				position: absolute;
+			}
+			#info{
+				width: 90%;
+				height: 80%;
+				background: white;
+				position: relative;
+				top:5%;
+				left: 5%;
+				border:1px solid darkslategray;
+			}
+			#shut{
+				width: 20px;
+				height: auto;
+				position: absolute;
+				top: 0;
+				right: 0;
+				cursor: pointer;
+			}
+		&lt;/style>
+	&lt;/head>
+
+	&lt;body>
+		&lt;div id="mask">
+			&lt;h1 style="text-align: center;">禾米科技免费培训申请表&lt;/h1>
+			&lt;div id="info">
+				&lt;h3 id="shut">X&lt;/h3>
+				&lt;h3 style="text-align: center;">详细信息&lt;/h3>
+				姓名:&lt;input type="text" id="name" value="" />
+				性别:&lt;input type="text" id="sex" value="" />
+				出生年月:&lt;input type="text" id="birthday" value="" />
+				&lt;br />
+				手机号码:&lt;input type="text" id="mobile" value="" />
+				政治面貌:&lt;input type="text" id="political" value="" />
+				QQ:&lt;input type="text" id="qq" value="" />
+				&lt;br />
+				学院:&lt;input type="text" id="college" value="" />
+				系:&lt;input type="text" id="faculty" value="" />
+				专业:&lt;input type="text" id="major" value="" />
+				&lt;br />
+				父亲姓名:&lt;input type="text" id="fatherName" value="" />
+				父亲电话:&lt;input type="text" id="fatherMobile" value="" />
+				&lt;br />
+				母亲姓名:&lt;input type="text" id="motherName" value="" />
+				母亲电话:&lt;input type="text" id="motherMobile" value="" />
+				&lt;br />
+				家庭住址:&lt;input type="text" id="address" value="" />
+				&lt;br />
+				信息来源:&lt;input type="text" id="source" value="" />
+				&lt;br />
+				专业能力描述:&lt;input type="text" id="majorMemo" value="" />
+				&lt;br />
+				自我评级描述:&lt;input type="text" id="selfMemo" value="" />
+			&lt;/div>
+		&lt;/div>
+		&lt;div id="content">
+			&lt;button id="btn">click&lt;/button>
+			&lt;input type="text" id="searchByname" />
+			&lt;div id="div" style="display: none;">&lt;/div>
+		&lt;/div>
+
+		&lt;script src="lib/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8">&lt;/script>
+		&lt;script type="text/javascript">
+			$(document).ready(function() {
+				$(function() {
+					$("#btn").click(function() {
+						var _data = {};
+						_data.pageNum = 1;
+						_data.pageSize = 20;
+						var $name = $("#searchByname").val();
+						if($name != "") {
+							_data.name = $name;
+						}
+						$.ajax({
+							type: "get",
+							url: "http://www.hemijiaoyu.com/service/searchApply",
+							dataType: "JSON",
+							data: _data,
+							success: function(msg) {
+								//								console.log(msg);
+								var arr = msg.list;
+								console.log(arr[0])
+								var str = "&lt;table>&lt;thead>&lt;th>姓名&lt;/th>&lt;th>性别&lt;/th>&lt;th>
+								出生年月&lt;/th>&lt;th>手机号码&lt;/th>&lt;th>政治面貌&lt;/th>&lt;th>
+								QQ&lt;/th>&lt;th>学院&lt;/th>&lt;th>系&lt;/th>&lt;th>专业&lt;/th>&lt;th>
+								申请时间&lt;/th>&lt;/thead>"
+								for(var i = 0; i &lt; arr.length; i++) {
+									str += "&lt;tr id= "+i+">";
+									var obj = arr[i];
+									str += "&lt;td>" + obj.name + "&lt;/td>";
+									str += "&lt;td>" + obj.sex + "&lt;/td>";
+									str += "&lt;td>" + obj.birthday + "&lt;/td>";
+									str += "&lt;td>" + obj.mobile + "&lt;/td>";
+									str += "&lt;td>" + obj.political + "&lt;/td>";
+									str += "&lt;td>" + obj.qq + "&lt;/td>";
+									str += "&lt;td>" + obj.college + "&lt;/td>";
+									str += "&lt;td>" + obj.faculty + "&lt;/td>";
+									str += "&lt;td>" + obj.major + "&lt;/td>";
+									str += "&lt;td>" + obj.createTime + "&lt;/td>";
+									str += "&lt;/tr>";
+								}
+								str += "&lt;/table>"
+								$("#div").html(str).slideDown();
+								$("tr").dblclick(function(e){
+									var obj11 = arr[e.currentTarget.id];
+									$("#name").val(obj11.name);
+									$("#sex").val(obj11.sex);
+									$("#birthday").val(obj11.birthday);
+									$("#mobile").val(obj11.mobile);
+									$("#political").val(obj11.political);
+									$("#qq").val(obj11.qq);
+									$("#college").val(obj11.college);
+									$("#faculty").val(obj11.faculty);
+									$("#major").val(obj11.major);
+									$("#fatherName").val(obj11.fatherName);
+									$("#fatherMobile").val(obj11.fatherMobile);
+									$("#motherName").val(obj11.matherName);
+									$("#motherMobile").val(obj11.matherMobile);
+									$("#address").val(obj11.homeAddress);
+									$("#source").val(obj11.source);
+									$("#majorMemo").val(obj11.majorMemo);
+									$("#selfMemo").val(obj11.selfMemo);
+//                                  for(var j in obj11){
+//                                  	$(j).val(obj11[j])
+//                                  }
+									$("#mask").fadeIn();
+								})
+								$("#shut").click(function(){
+									$("#mask").fadeOut()
+								})
+							},
+							error: function(error) {
+								console.log("fail")
+							}
+
+						});
+					})
+				})
+
+				//				})
+			})
+		&lt;/script>
+	&lt;/body>
+
+&lt;/html>
+		</pre>
+		<h3><a href="2061228ajax.html"></a></h3>
+	 </div>
+	 	
+		
+	</body>
+</html>
+
+
+
