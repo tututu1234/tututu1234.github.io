@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{padding: 0;margin: 0;font-family: "微软雅黑";}
+			h1{width: auto;height: 100px;line-height: 100px;}
+			h3{width: auto;height: 60px;line-height: 60px;}
+			pre{width: 840px;height: auto;background:lightyellow;border: 2px solid grey;border-radius: 10px;margin-top: 30px;margin-bottom: 30px;padding: 5px;}
+		</style>
+	</head>
+	<body>
+	 <div style="width:1000px;height: auto;margin: auto;">
+	 	<h1>ajax上传</h1>
+	 	<h3>ajax()方法</h3>
+	 	<p>ajax()方法是jQuery底层的ajax实现，通过HTTP请求加载远程数据。</p>
+	 	<pre>
+$.ajax({
+type: "GET",
+url: "handleAjaxRequest.action",
+data: {paramKey:paramValue},
+async: true,
+dataType:"json",
+success: function(returnedData) {
+alert(returnedData);
+//请求成功后的回调函数
+//returnedData--由服务器返回，并根据 dataType 参数进行处理后的数据；
+//根据返回的数据进行业务处理
+},
+error: function(e) {
+alert(e);
+//请求失败时调用此函数
+}
+});
+}
+	 	</pre>
+	 	
+   <p>参数说明:
+　　<p>type:请求方式，“POST”或者“GET”,默认为“GET”。
+　　<p>url:发送请求的地址。
+　　<p>data:要向服务器传递的数据，已key:value的形式书写（id:1）。GET请求会附加到url后面。
+　　<p>async:默认true,为异步请求，设置为false,则为同步请求。
+　　<p>dataType:预期服务器返回的数据类型,可以不指定。有xml、html、text等。
+　　<p>在开发中，使用以上参数已可以满足基本需求。
+　　<p>如果需要向服务器传递中文参数，可将参数写在url后面，用encodeURI编码就可以了
+	 	<h3>示例</h3>
+	 	<pre>
+&lt;!DOCTYPE html>
+&lt;html>
+	&lt;head>
+		&lt;meta charset="UTF-8">
+		&lt;title>&lt;/title>
+		&lt;style type="text/css">
+		    *{
+		    	text-align: center;
+		    	padding: 0;
+		    	margin: 0;
+		    }
+		    table{
+		    	background: black;
+		    	margin: auto;
+		    }
+			td{
+				width: 150px;
+				height: 50px;
+				background: white;
+			}
+			input{
+				border:0;
+			}
+			.one{
+				width: 150px;
+				height: 50px;
+			}
+			.two{
+				width: 300px;
+				height: 50px;
+			}
+		&lt;/style>
+	&lt;/head>
+	&lt;body>
+		&lt;h1>禾米科技免费培训申请表&lt;/h1>
+		&lt;h5>方式一：在线填写（如果信息提交失败或者您使用的是IE10版本一下的浏览器请选择方式二&lt;/h5>
+		&lt;form action="">
+			&lt;table>
+				&lt;tr>&lt;td colspan="6" style="text-align: left;">个人信息及联系方式&lt;/td>&lt;/tr>
+				&lt;tr>
+					&lt;td>姓名&lt;/td>
+					&lt;td>&lt;input type="text" class="one" id="name"/>&lt;/td>
+					&lt;td>性别&lt;/td>
+					&lt;td>&lt;select name="" id="sex">
+						&lt;option value="">男&lt;/option>
+						&lt;option value="">女&lt;/option>
+					&lt;/select>&lt;/td>
+					&lt;td>出生年月&lt;/td>
+					&lt;td>&lt;input type="month"  id="birthday"  />&lt;/td>
+				&lt;/tr>
+				&lt;tr>
+					&lt;td>手机号码&lt;/td>
+					&lt;td>&lt;input type="text"  id="mobile" class="one"/>&lt;/td>
+					&lt;td>政治面貌&lt;/td>
+					&lt;td>&lt;select name="" id="political">
+						&lt;option value="">团员&lt;/option>
+						&lt;option value="">党员&lt;/option>
+						&lt;option value="">群众&lt;/option>
+					&lt;/select>&lt;/td>
+					&lt;td>QQ&lt;/td>
+					&lt;td>&lt;input type="text" class="one" id="qq"/>&lt;/td>
+				&lt;/tr>
+				&lt;tr>
+					&lt;td>学院&lt;/td>
+					&lt;td>&lt;input type="text" class="one" id="college"/>&lt;/td>
+					&lt;td>系&lt;/td>
+					&lt;td>&lt;input type="text" class="one" id="faculty"/>&lt;/td>
+					&lt;td>专业&lt;/td>
+					&lt;td>&lt;input type="text" class="one" id="major"/>&lt;/td>
+				&lt;/tr>
+				&lt;tr>&lt;td colspan="6" style="text-align: left;">家庭联系方式&lt;/td>&lt;/tr>
+				&lt;tr>
+					&lt;td>父亲姓名&lt;/td>
+					&lt;td colspan="2">&lt;input type="text" class="two" id="fatherName"/>&lt;/td>
+					&lt;td>父亲电话&lt;/td>
+					&lt;td colspan="2">&lt;input type="text"  class="two" id="fatherMobile"/>&lt;/td>
+				&lt;/tr>
+				&lt;tr>
+					&lt;td>母亲姓名&lt;/td>
+					&lt;td colspan="2">&lt;input type="text"  class="two" id="motherName"/>&lt;/td>
+					&lt;td>母亲电话&lt;/td>
+					&lt;td colspan="2">&lt;input type="text"  class="two" id="motherMobile"/>&lt;/td>
+				&lt;/tr>
+				&lt;tr>
+					&lt;td>家庭住址&lt;/td>
+					&lt;td colspan="5">
+					    &lt;input type="text" style="width: 750px;height: 50px;" id="address"/>
+					&lt;/td>
+				&lt;/tr>
+				&lt;tr>
+					&lt;td>信息来源&lt;/td>
+					&lt;td colspan="5">&lt;input type="radio" name="1" id="" value="" />熟人介绍
+					&lt;input type="radio" name="1" id="" value="" />杂志
+					&lt;input type="radio" name="1" id="" value="" />媒体广告
+					&lt;input type="radio" name="1" id="" value="" />其他
+					&lt;/td>
+				&lt;/tr>
+				&lt;tr>&lt;td colspan="6" style="text-align: left;">
+				个人能力与自我评价（自己所学的专业知识与能力，获奖情况以及自己的优点与兴趣爱好）&lt;/td>
+				&lt;/tr>
+				&lt;tr style="height: 100px;">
+					&lt;td>专业能力描述&lt;/td>
+					&lt;td colspan="5">
+					&lt;textarea type="text" id="power" style="width: 750px;height: 100px;border:0">
+					&lt;/textarea>
+					&lt;/td>
+				&lt;/tr>
+				&lt;tr style="height: 100px;">
+					&lt;td>自我评价描述&lt;/td>
+					&lt;td colspan="5">
+					&lt;textarea type="text" id="selfMemo" style="width: 750px;height: 100px;border:0">
+					&lt;/textarea>
+					&lt;/td>
+				&lt;/tr>
+			&lt;/table>
+			&lt;input type="button" name="" id="upload" value="提交" />
+		&lt;/form>
+	&lt;/body>
+	&lt;script src="lib/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8">&lt;/script>
+	&lt;script type="text/javascript">
+		$(document).ready(function(){
+			$("#upload").click(function(){
+				var name = $("#name").val();
+				var sex = $("#sex").find("option:selected").text();
+				var birthday = $("#birthday").val();
+				var birth = birthday.split("-");
+				birthday = birth[0]+birth[1];
+				var mobile = $("#mobile").val();
+				var political = $("#political").find("option:selected").text();
+				var college = $("#college").val();
+				var qq = $("#qq").val();
+				var faculty = $("#faculty").val();
+				var major = $("#major").val();
+				var fatherName = $("#fatherName").val();
+				var fatherMobile = $("#fatherMobile").val();
+				var matherName = $("#motherName").val();
+				var matherMobile = $("#motherMobile").val();
+				var homeAddress = $("#address").val();
+				var source;
+				var majorMemo = $("#power").val();
+				var selfMemo = $("#selfMemo").val();
+				
+				if($("#name").val().length &lt; 2 || $("#name").val().length > 11){
+					alert("姓名格式不对");
+					return false;
+				}
+				if($("#birthday").val() == ""){
+					alert("出生年月格式不对")
+					return false;
+				}
+				var num = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
+				if(!num.test($("#mobile").val())){
+					alert("手机号格式不对");
+					return false;
+				}
+				if($("#qq").val().length &lt; 6 || $("#qq").val().length > 11){
+					alert("qq格式不对");
+					return false;
+				}
+				if($("#college").val().length &lt; 2 || $("#college").val().length > 100){
+					alert("学院格式不对");
+					return false;
+				}
+				if($("#faculty").val().length &lt; 2 || $("#faculty").val().length > 110){
+					alert("系格式不对");
+					return false;
+				}
+				if($("#major").val().length &lt; 2 || $("#major").val().length > 110){
+					alert("专业格式不对");
+					return false;
+				}
+				if($("#fatherName").val().length &lt; 2 || $("#fatherName").val().length > 11){
+					alert("父亲姓名格式不对");
+					return false;
+				}
+				if(!num.test($("#fatherMobile").val())){
+					alert("父亲手机号格式不对");
+					return false;
+				}
+				if($("#motherName").val().length &lt; 2 || $("#motherName").val().length > 11){
+					alert("母亲姓名格式不对");
+					return false;
+				}
+				if(!num.test($("#motherMobile").val())){
+					alert("母亲手机号格式不对");
+					return false;
+				}
+				if($("#address").val().length&lt;2 || $("#address").val().length>22){
+					alert("住址格式不对");
+					return false;
+				}
+				
+				var m = 0;
+				for (var i = 0 ;i&lt;$("input[name='1']").length;i++) {
+					if($("input[name='1']")[i].checked == true){
+						m++;
+						switch(i){
+							case 0:
+							source = "熟人介绍";
+							break;
+							case 1:
+							source = "杂志";
+							break;
+							case 2:
+							source = "媒体广告";
+							break;
+							case 3:
+							source = "其他";
+							break;
+						}
+					}
+				}
+				if(m == 0){
+					alert("信息来源未选择");
+					return false;
+				}
+				if($("#power").val().length&lt;2 || $("#power").val().length>220){
+					alert("能力描述格式不对");
+					return false;
+				}
+				if($("#selfMemo").val().length&lt;2 || $("#selfMemo").val().length>220){
+					alert("自我描述格式不对");
+					return false;
+				}
+				
+				
+				
+				var _url = "http://www.hemijiaoyu.com/service/addApply";
+				var _data = {};
+				_data.name = name;
+				_data.sex = sex;
+				_data.birthday = birthday;
+				_data.mobile = mobile;
+				_data.political = political;
+				_data.college = college;
+				_data.qq = qq;
+				_data.faculty = faculty;
+				_data.major = major;
+				_data.fatherName = fatherName;
+				_data.fatherMobile = fatherMobile;
+				_data.matherName = matherName;
+				_data.matherMobile = matherMobile;
+				_data.homeAddress = homeAddress;
+				_data.source = source;
+				_data.majorMemo = majorMemo;
+				_data.selfMemo = selfMemo;
+//				_data.createTime = new Date().getTime();
+				
+				
+				$.ajax({
+					type:"post",
+					url:_url,
+					data:_data,
+					dataType:"text",
+					success:function(msg){
+						console.log("pass"+msg)
+					},error:function(error){
+						console.log("fail"+error)
+					}
+				});
+			})
+		})
+	&lt;/script>
+&lt;/html>
+	 	</pre>
+		
+	 </div>
+	 	
+		
+	</body>
+</html>
+
+
+
+
