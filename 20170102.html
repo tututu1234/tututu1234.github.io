@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+				font-family: "微软雅黑";
+			}
+			
+			h1 {
+				width: auto;
+				height: 100px;
+				line-height: 100px;
+			}
+			
+			h3 {
+				width: auto;
+				height: 60px;
+				line-height: 60px;
+			}
+			
+			pre {
+				width: 800px;
+				height: auto;
+				background: lightyellow;
+				border: 2px solid grey;
+				border-radius: 10px;
+				margin-top: 30px;
+				margin-bottom: 30px;
+				padding: 5px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div style="width:1000px;height: auto;margin: auto;">
+			<h1>jQuery技巧</h1>
+			<h3>1.链式操作</h3>
+			<p>选中网页元素以后，就可以对它进行某种操作。
+				<p>jQuery允许将所有操作连接在一起，以链条的形式写出来，比如：
+					<p>$('div').find('h3').eq(2).html('Hello');
+						<p>分解开来，就是下面这样：
+							<pre>
+1. $('div')                 //找到div元素 
+2. .find('h3')           //选择其中的h3元素
+3. .eq(2)               //选择第3个h3元素 
+4. .html('Hello');  //将它的内容改为Hello  
+           </pre>
+							<p>这是jQuery最令人称道、最方便的特点。它的原理在于每一步的jQuery操作，返回的都是一个jQuery对象，所以不同操作可以连在一起。 　jQuery还提供了.end()方法，使得结果集可以后退一步：
+							</p>
+							<pre>
+1. $('div')  
+2. .find('h3')  
+3. .eq(2)  
+4. .html('Hello')  
+5. .end()//退回到选中所有的h3元素的那一步  
+6. .eq(0)//选中第一个h3元素  
+7. .html('World'); //将它的内容改为World 
+</pre>
+							<p>.end()：回到最近的一个"破坏性"操作之前。如果之前没有破坏性操作，则返回一个空集。所谓的"破坏性"就是指任何改变所匹配的jQuery元素的操作。</p>
+							<h5>示例</h5>
+							<p>描述：选取所有的p元素，查找并选取span子元素，然后再回过来选取p元素</p>
+							<pre>
+	HTML 代码:
+ 
+&lt;p>&lt;span>Hello&lt;"/span>,how are you?&lt;"/p>
+jQuery 代码:
+ 
+$("p").find("span").end()
+结果:
+ 
+&lt;p>&lt;span>Hello&lt;"/span> how are you?&lt;"/p> 
+</pre>
+							<h3>2.元素的操作：取值和赋值</h3>
+							<p>操作网页元素，最常见的需求是取得它们的值，或者对它们进行赋值。
+								<p>jQuery使用同一个函数，来完成取值（getter）和赋值（setter）。到底是取值还是赋值，由函数的参数决定。
+									<p>$('h1').html(); //html()没有参数，表示取出h1的值
+										<p>$('h1').html('Hello'); //html()有参数Hello，表示对h1进行赋值
+											<p>常见的取值和赋值函数如下：
+												<pre>
+1. .html() 返回或设置被选元素的内容 (inner HTML)    
+2. .text() 取出或设置text内容      
+3. .attr() 取出或设置某个属性的值    
+4. .width() 取出或设置某个元素的宽度    
+5. .height() 取出或设置某个元素的高度  
+6. .val() 取出或设置html内容 取出某个表单元素的值 
+	</pre>
+												<p>需要注意的是，如果结果集包含多个元素，那么赋值的时候，将对其中所有的元素赋值；取值的时候，则是只取出第一个元素的值（.text()例外，它取出所有元素的text内容）。</p>
+												<h3>3.工具方法</h3>
+												<p>除了对选中的元素进行操作以外，jQuery还提供一些工具方法（utility），不必选中元素，就可以直接使用。 常用的工具方法有以下几种：
+												</p>
+												<pre>
+ $.trim() 去除字符串两端的空格。
+ $.each() 遍历一个数组或对象。  
+ $.inArray() 返回一个值在数组中的索引位置。如果该值不在数组中，则返回-1。  
+ $.grep() 返回数组中符合某种标准的元素。   
+ $.extend() 将多个对象，合并到第一个对象。   
+ $.makeArray() 将对象转化为数组。  
+ $.type() 判断对象的类别（函数对象、日期对象、数组对象、正则对象等等）。  
+ $.isArray() 判断某个参数是否为数组。  
+ $.isEmptyObject() 判断某个对象是否为空（不含有任何属性）。  
+ $.isFunction() 判断某个参数是否为函数。  
+ $.isPlainObject() 判断某个参数是否为用"{}"或"new Object"建立的对象。  
+ $.support() 判断浏览器是否支持某个特性。 
+</pre>
+		</div>
+
+	</body>
+
+</html>
