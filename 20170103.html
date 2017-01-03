@@ -14,11 +14,86 @@
 	 <div style="width:1000px;height: auto;margin: auto;">
 	 	<h1>jQuery实例</h1>
 	 	<h3><a href="20170103/9.1.html">实例一</a></h3>
+	 	<pre>
+	$(function(){
+		$(".tab li").mouseenter(function(){
+			$(this).addClass("active").siblings().removeClass("active");
+			$(".main").eq($(this).index()).addClass("selected").siblings().removeClass("selected");
+		})
+	})
+	 	</pre>
+	 	<h3><a href="20170103/9.2.html">实例二</a></h3>
+	 	<pre>
+	$(function(){
+		var idx = 0;
+		$(".wrap ol li").mouseenter(function(){
+			idx += 1;
+			$(this).addClass("active").siblings().removeClass("active");
+			$(".wrap ul li").eq($(this).index()).css({"left":650,"z-index":idx}).animate({"left":0},300)
+		})
+	})
+	 	</pre>
+	 	<h3><a href="20170103/9.3.html">实例三</a></h3>
+	 	<pre>
+	 	$(function () {
+            $(".wrap li").each(function (i,ele) {
+                $(this)
+                        .css("background-image","url(img/" + (i + 1) +".png)");
+            }).mouseenter(function () {
+                $(this).stop().animate({
+                    "width":600
+                },300).siblings().stop().animate({
+                	"width":100
+                },300)
+            }).mouseleave(function (a) {
+                $("li").stop().animate({
+                    "width":200
+                },300)
+            });
+        })
+	 	</pre>
+	 	<h3><a href="20170103/9.5.html">实例四</a></h3>
+	 	<pre>
+	$(function(){
+		$("#left li").mouseenter(function(){
+			$("#center li").eq($(this).index()).show().siblings().hide()
+		})
+		$("#right li").mouseenter(function(){
+			$("#center li").eq($(this).index()+9).show().siblings().hide()
+		})
+	})
+	 	</pre>
+	 	<h3><a href="20170103/9.6.html">实例五</a></h3>
+	 	<pre>
+	    $(document).ready(function(){
+			$("#zhaotiancheng").slideDown().click(function(){
+				$(this).fadeOut()
+			})
+		})
+	 	</pre>
+	 	<h3><a href="20170103/0103.html">实例六</a></h3>
+	 	<pre>
+	 	$(function(){
+			$(".box").mouseenter(function(){
+				$(".inbox").eq($(this).index()).show().stop().animate({
+					"width":300
+				},300)
+				$(".inbox2").eq($(this).index()).fadeOut()
+			}).mouseleave(function(){
+				$(".inbox").eq($(this).index()).css({"width":0}).hide()
+				$(".inbox2").eq($(this).index()).slideDown()
+			})
+		})
+	 	</pre>
 	 </div>
 	 	
 		
 	</body>
 </html>
+
+
+
+
 
 
 
