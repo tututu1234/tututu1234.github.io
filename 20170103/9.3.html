@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+
+        .wrap {
+            width: 1010px;
+            margin: 100px auto 0;
+        }
+        .wrap li{
+            width: 200px;
+            height: 400px;
+            float: left;
+        }
+    </style>
+    <script src="lib/jquery-3.1.1.min.js"></script>
+    <script>
+        $(function () {
+            $(".wrap li").each(function (i,ele) {
+                $(this)
+                        .css("background-image","url(img/" + (i + 1) +".png)");
+            }).mouseenter(function () {
+                $(this).stop().animate({
+                    "width":600
+                },300).siblings().stop().animate({
+                	"width":100
+                },300)
+            }).mouseleave(function (a) {
+                $("li").stop().animate({
+                    "width":200
+                },300)
+            });
+        })
+    </script>
+</head>
+<body>
+<div class="wrap">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+</body>
+</html>

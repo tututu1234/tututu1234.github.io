@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#zhaotiancheng{
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="zhaotiancheng">
+			<img src="img/1.png" width="400px" height="200px"/>
+		</div>
+	</body>
+	<script src="lib/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#zhaotiancheng").slideDown().click(function(){
+				$(this).fadeOut()
+			})
+		})
+	</script>
+</html>
