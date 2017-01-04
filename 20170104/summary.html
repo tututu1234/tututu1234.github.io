@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{padding: 0;margin: 0;font-family: "微软雅黑";}
+			h1{width: auto;height: 100px;line-height: 100px;}
+			h3{width: auto;height: 60px;line-height: 60px;}
+			pre{width: 800px;height: auto;background:lightyellow;border: 2px solid grey;border-radius: 10px;margin-top: 30px;margin-bottom: 30px;padding: 5px;}
+		</style>
+	</head>
+	<body>
+	 <div style="width:1000px;height: auto;margin: auto;">
+	 	<h1>html5</h1>
+	 	<h3>网页结构</h3>
+	 	<p>header:头部</p>
+	 	<p>nav:导航</p>
+	 	<p>section:章节</p>
+	 	<p>article:文章</p>
+	 	<p>aside:定义页面内容之外的内容。</p>
+	 	<p>footer：底部</p>
+	 	<pre>
+&lt;!DOCTYPE html>
+&lt;html>
+
+	&lt;head>
+		&lt;meta charset="UTF-8">
+		&lt;title>&lt;/title>
+		&lt;style type="text/css">
+			* {
+				text-align: center;
+				margin: 0;
+				padding: 0;
+				line-height: 100px;
+				font-size: 30px;
+			}
+			
+			header {
+				width: 800px;
+				height: 100px;
+				background: skyblue;
+			}
+			
+			nav {
+				width: 800px;
+				height: 100px;
+				background: red;
+			}
+			
+			section {
+				width: 600px;
+				height: 300px;
+				background: green;
+				float: left;
+			}
+			
+			article {
+				width: 600px;
+				height: 100px;
+				background: deepskyblue;
+			}
+			
+			footer {
+				width: 800px;
+				height: 100px;
+				background: firebrick;
+				clear: both;
+			}
+			
+			aside {
+				width: 200px;
+				height: 300px;
+				float: left;
+				background: darkmagenta;
+			}
+			
+			div {
+				width: 200px;
+				height: 100px;
+				background: blue;
+			}
+		&lt;/style>
+	&lt;/head>
+
+	&lt;body>
+		&lt;header>header&lt;/header>
+		&lt;nav>nav&lt;/nav>
+		&lt;section>
+			&lt;h1>section&lt;/h1>
+			&lt;article>article&lt;/article>
+			&lt;article>article&lt;/article>
+		&lt;/section>
+		&lt;aside>
+			&lt;h1>aside&lt;/h1>
+			&lt;div>widget&lt;/div>
+			&lt;div>widget&lt;/div>
+		&lt;/aside>
+		&lt;footer>footer&lt;/footer>
+	&lt;/body>
+
+&lt;/html>
+	 	</pre>
+	 	<h5><a href="html5.html">实例</a></h5>
+	 	
+	 	<h3>数据库操作</h3>
+	 	<h5>1.添加</h5>
+	 	<pre>
+INSERT INTO TABLE_NAME (column1, column2, column3,...columnN)]  
+VALUES (value1, value2, value3,...valueN);
+	 	</pre>
+	 	<h5>2.删除</h5>
+	 	<pre>
+DELETE FROM table_name
+WHERE [condition];
+	 	</pre>
+	 	<h5>3.修改</h5>
+	 	<pre>
+UPDATE table_name
+SET column1 = value1, column2 = value2...., columnN = valueN
+WHERE [condition];
+	 	</pre>
+	 	<h5>4.查找</h5>
+	 	<pre>
+SELECT column1, column2, columnN FROM table_name;
+	 	</pre>
+	 	<h1>地图API</h1>
+	 	<h4><a href="map.html">效果展示</a></h4>
+	 </div>
+	 	
+		
+	</body>
+</html>
+
+
+
