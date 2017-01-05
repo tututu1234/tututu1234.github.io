@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<form action="" method="post">
+			歌曲名:<input id="musicName" type="text"/>
+
+			<input type="button" value="submit" id="btn" />
+		</form>
+		<script type="text/javascript">
+			var storageObj = {
+				isSupport: function() {
+					if(!window.localStorage) {
+						console.log("no");
+						return false;
+					} else {
+						return true;
+					}
+				},
+				Set: function(_item, value) {
+					window.localStorage.setItem(_item, value)
+				},
+				Get: function(_item) {
+					return window.localStorage.getItem(_item)
+				}
+//				Clear: function() {
+//					window.localStorage.clear()
+//				},
+//				Remove: function(_item) {
+//					window.localStorage.removeItem(_item);
+//				}
+			}
+			
+			
+			var btn = document.getElementById("btn");
+			btn.onclick = function() {
+				var name = document.getElementById("musicName");
+				var str = name.value;
+			    console.log(str)
+                  storageObj.Set("musicName",str)
+			}
+		</script>
+	</body>
+
+</html>

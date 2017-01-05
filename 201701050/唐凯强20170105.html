@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#circle{
+				width: 300px;
+				height: 300px;
+				border-radius: 300px;
+				margin: auto;
+				text-align: center;
+				font-size: 100px;
+				line-height: 300px;
+				color: white;
+				background: greenyellow;
+				transition: all 0.3s linear
+			}
+			#circle:hover{
+				animation: mymove 0.3s linear 2;
+				background: deepskyblue;
+			}
+			@keyframes mymove{
+				0%{transform: rotateX(0deg) scale(1,1);}
+				/*25%{transform: rotateX(5deg) scale(1.4,0.6);}*/
+				50%{transform: rotateX(15deg) scale(1.2,0.8);}
+				/*90%{transform: rotateX(5deg) scale(1.2,0.8);}*/
+				100%{transform: rotateX(0deg) scale(1,1);}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="circle">弹</div>
+	</body>
+</html>
