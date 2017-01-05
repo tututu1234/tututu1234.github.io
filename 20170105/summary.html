@@ -24,6 +24,85 @@
 	 	<p>@keyframes:规定动画。@keyframes animationname {keyframes-selector {css-styles;}}</p>
 	 	<p>animation:所有动画属性的简写属性，除了 animation-play-state 属性。animation: name duration timing-function delay iteration-count direction;</p>
 	 	<h5><a href="ss.html">旋转立方体</a></h5>
+	 	<pre>
+&lt;!DOCTYPE html>
+&lt;html>
+	&lt;head>
+		&lt;meta charset="UTF-8">
+		&lt;title>&lt;/title>
+		&lt;style type="text/css">
+			body{
+				padding: 0;
+				margin: 0;
+			}
+			#cube{
+				margin: 300px auto;
+				width: 400px;
+				height: 400px;
+				position: relative;
+				/*transition: all 5s linear;*/ 
+				/*transform: rotateX(200deg) rotateY(60deg) rotateZ(60deg);*/
+				/*perspective: 1000px;*/
+				transform-style: preserve-3d;
+				animation: mymove 5s linear infinite;
+			}
+			/*#cube:hover{
+				transform: rotateX(1200deg) rotateY(600deg) rotateZ(600deg);
+			}*/
+			#back,#front,#left,#right,#top,#bottom{
+				width: 400px;
+				height: 400px;
+				position: absolute;
+				font-size: 30px;
+				line-height: 400px;
+				text-align: center;
+				top:0;
+				left:0;
+			}
+			#left{
+				background: blue;
+				transform: rotateY(90deg) translateZ(-200px);
+			}
+			#right{
+				background: greenyellow;
+				transform: rotateY(90deg) translateZ(200px);
+			}
+			#top{
+				background: darkred;
+				transform: rotateX(90deg) translateZ(200px);	
+			}
+			#bottom{
+				background: palevioletred;
+				transform: rotateX(90deg) translateZ(-200px);	
+			}
+			#front{
+				background: purple;
+				transform:translateZ(200px);
+			}
+			#back{
+				background: fuchsia;
+				transform:translateZ(-200px);
+			}
+			@keyframes mymove
+			{
+				0% {transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);}
+				100%{transform: rotateX(180deg) rotateY(180deg) rotateZ(180deg);}
+			}
+		&lt;/style>
+	&lt;/head>
+	&lt;body>
+		&lt;div id="cube">
+			&lt;div id="front">前面&lt;/div>
+			&lt;div id="back">后面&lt;/div>
+			&lt;div id="left">左面&lt;/div>
+			&lt;div id="right">右面&lt;/div>
+			&lt;div id="top">上面&lt;/div>
+			&lt;div id="bottom">下面&lt;/div>
+		&lt;/div>
+	&lt;/body>
+&lt;/html>
+
+	 	</pre>
 	 	<h3>web存储</h3>
 	 	<p>HTML5 提供了两种在客户端存储数据的新方法：
         <p>localStorage - 没有时间限制的数据存储
