@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+				font-family: "微软雅黑";
+			}
+			
+			h1 {
+				width: auto;
+				height: 100px;
+				line-height: 100px;
+			}
+			
+			h3 {
+				width: auto;
+				height: 60px;
+				line-height: 60px;
+			}
+			
+			h5 {
+				height: 40px;
+				line-height: 40px;
+			}
+			
+			pre {
+				width: 800px;
+				height: auto;
+				background: lightyellow;
+				border: 2px solid grey;
+				border-radius: 10px;
+				margin-top: 30px;
+				margin-bottom: 30px;
+				padding: 5px;
+			}
+			
+			p {
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div style="width:1000px;height: auto;margin: auto;">
+			<h1>css3动画</h1>
+			<p>CSS3添加了几个动画效果的属性，通过设置这些属性，可以做出一些简单的动画效果而不需要再去借助JavaScript。CSS3动画的属性主要分为三类：transform、transition以及animation。</p>
+			<h3>transform</h3>
+			<h5>rotate</h5>
+			<p>设置元素顺时针旋转的角度，用法是：
+				<p>transform: rotate(x);
+					<p>参数x必须是以deg结尾的角度数或0，可为负数表示反向。</p>
+					<h5>scale</h5>
+					<p>设置元素放大或缩小的倍数，用法包括：</p>
+					<pre>
+transform: scale(a);                  元素x和y方向均缩放a倍
+transform: scale(a, b);              元素x方向缩放a倍，y方向缩放b倍
+transform: scaleX(a);                元素x方向缩放a倍，y方向不变
+transform: scaleY(b);                元素y方向缩放b倍，x方向不变
+        </pre>
+					<h5>translate</h5>
+					<p>设置元素的位移，用法为：</p>
+					<pre>
+transform: translate(a, b);                元素x方向位移a，y方向位移b
+transform: translateX(a);                  元素x方向位移a，y方向不变
+transform: translateY(b);                  元素y方向位移b，x方向不变
+        </pre>
+					<h5>skew</h5>
+					<p>设置元素倾斜的角度，用法包括：</p>
+					<pre>
+transform: skew(a, b);              元素x方向逆时针倾斜角度a，y方向顺时针倾斜角度b
+transform: skewX(a);                元素x方向逆时针倾斜角度a，y方向不变
+transform: skewY(b);                元素y方向顺时针倾斜角度b，想方向不变
+        </pre>
+					<p>以上的参数均必须是以deg结尾的角度数或0，可为负数表示反向。</p>
+					<h5>matrix</h5>
+					<p>设置元素的变形矩阵，因为矩阵变形过于复杂，暂略。</p>
+					<h5>origin</h5>
+					<p>设置元素的悬挂点，用法包括：</p>
+					<pre>
+        	transform-origin: a b;                元素的悬挂点为(a, b)
+        </pre>
+					<p>元素的悬挂点即为它旋转和倾斜时的中心点。取值中的a、b可以是长度值、以%结尾的百分比或者left、top、right、bottom四个值。</p>
+					<h3>transition</h3>
+					<h5>transition-property</h5>
+					<p>指定transition效果作用的CSS属性，其值是CSS属性名。</p>
+					<h5>transition-duration</h5>
+					<p>动画效果持续的时间，其值为以s结尾的秒数。</p>
+					<h5>transition-timing-function</h5>
+					<p>指定元素状态的变化速率函数，其取值基于贝赛尔曲线函数</p>
+					<h5>transition-delay</h5>
+                    <p>动画效果推迟开始执行的时间，其值为以s结尾的秒数。</p>
+                    <h3>animation</h3>
+                    <p>CSS3中真正的动画属性是animation，而前面的transform和transition都只是对DOM元素的变形或者是状态的过渡。实际上，CSS3所支持的动画效果只是填充动画，也就是说先设定整个动画生命周期中的几个关键状态（key  frame，关键帧），然后动画将自行计算并模拟关键帧之间的过渡。那么在设置animation的属性之前就必须先设定好关键帧了。
+关键帧@keyframes的语法结构如下：</p>
+                    <pre>
+@keyframesNAME {
+         a% {
+         /*CSS属性*/
+         }
+         b% {
+                  /*CSS属性*/
+         }
+         ...
+}
+                    </pre>
+                    <p>NAME表示动画的名字；a%、b%表示以百分号结尾的百分数，用于设定该关键帧在动画生命周期中的位置；百分数后面的{ } 中则需要写成该关键帧状态下CSS属性的值。另外，如果同一个百分数值在@keyframes中出现多次，那么后出现的将覆盖先出现的；并且关键帧在@keyframes中时无序的。
+设置完关键帧后就可以继续设定animation了。</p>
+		</div>
+
+	</body>
+
+</html>
