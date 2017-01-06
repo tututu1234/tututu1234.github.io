@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<script>
+var x=document.getElementById("demo");
+var n;
+function getLocation()
+  {
+  if (navigator.geolocation)
+    {
+    n=navigator.geolocation.getCurrentPosition();
+    return n;
+    }
+  else{x.innerHTML="Geolocation is not supported by this browser.";}
+  }
+function showPosition(position)
+  {
+  x.innerHTML="Latitude: " + position.coords.latitude +
+  "<br />Longitude: " + position.coords.longitude;
+  }
+  showPosition(n)
+</script>
+	</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				margin: 0;
+				padding: 0;
+			}
+			#cube{
+				margin: 300px auto;
+				width: 300px;
+				height: 400px;
+				position: relative;
+				transform: rotateX(-25deg) rotateY(30deg)/*rotateY(45deg)*/;
+				transition: all 5s linear;
+				transform-style: preserve-3d;	
+				/*animation: mymove 5s linear infinite;*/
+				perspective: 1000;/*透视3d效果*/
+                
+			}
+			#front_a,#front_b,#front_c,#front_d,#front_e,#front_f,#front_g,#front_h,#bot{
+				width: 80%;
+				height: 100%;
+				position: absolute;
+				text-align: center;
+				line-height: 400px;
+				font-size: 30px;
+				top:0;
+				left: 0;
+			}
+			#front_a{
+				background: url(img/1.png);
+				transform: rotateY(0deg) translateZ(600px);			
+			}
+			#front_b{
+				background: url(img/2.png);
+				transform: rotateY(45deg) translateZ(600px);			
+			}
+			#front_c{
+				background: url(img/3.png);
+				transform: rotateY(90deg) translateZ(600px);			
+			}
+			#front_d{
+				background: url(img/4.png);
+				transform: rotateY(135deg) translateZ(600px);			
+			}
+			#front_e{
+				background: url(img/5.png);
+				transform: rotateY(180deg) translateZ(600px);			
+			}
+			#front_f{
+				background: url(img/banner.jpg);
+				transform:rotateY(225deg) translateZ(600px);			
+			}
+			#front_g{
+				background: url(img/banner1.JPG);
+				transform:rotateY(270deg) translateZ(600px);			
+			}
+			#front_h{
+				background: url(img/2.png);
+				transform:rotateY(315deg) translateZ(600px);			
+			}
+			#bot{
+				background:gray;
+				/*background-size: 100% auto;*/
+				width: 2000px;
+				height: 2000px;
+				transform: rotatex(90deg) translateX(-822px) translateZ(601px) translateY(132px);
+				border-radius: 1000px;
+			}
+			/*#cube:hover{
+				transform:  rotateY(180deg) rotateX(90deg);
+			}*/
+			/*@keyframes mymove
+			{
+				0% {transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);}
+				100% {transform: rotateX(180deg) rotateY(180deg) rotateZ(180deg);}
+			}*/
+		</style>
+	</head>
+	<body>
+		<div id="cube">
+			<div id="front_a"></div>
+			<div id="front_b"></div>
+			<div id="front_c"></div>
+			<div id="front_d"></div>
+			<div id="front_e"></div>
+			<div id="front_f"></div>
+			<div id="front_g"></div>
+			<div id="front_h"></div>
+			<div id="bot"></div>
+		</div>
+	</body>
+</html>

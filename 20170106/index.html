@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			body{
+				padding: 0;
+				margin: 0;
+			}
+			#trDiv{
+				width: 300px;
+				height: 300px;
+				border-radius: 150px;
+				position: relative;
+				
+			}
+			#trDiv::before,#trDiv::after{
+				content:"";
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				border-radius: 150px;
+			}
+			#trDiv::before{
+				background: url(img/1.png) left bottom;
+			}
+			#trDiv::after{
+				background: url(img/2.png) right bottom;
+				transition: all 1s;
+				transform-origin: center right;/*变换中心*/
+				backface-visibility: hidden;/*背面不可见*/
+			}
+			#trDiv:hover::after{
+				transform: rotateY(90deg);
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="trDiv"></div>
+	</body>
+</html>
