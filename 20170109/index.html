@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box {
+				width: 441px;
+				height: 662px;
+				background-image: url(img/bg1.jpg);
+				background-repeat: repeat-y;
+				background-position-y: 300px;
+				margin: auto;
+				position: relative;
+			}
+			
+			#box>img {
+				position: absolute;
+				left: 205.5px;
+				bottom: 100px;
+			}
+			
+			.bullet {
+				width: 8px;
+				height: 8px;
+				border-radius: 50%;
+				background-color: red;
+				position: absolute;
+			}
+			.enemy{
+				width: 45px;
+				height: 54px;
+				background-image: url(img/ememy1.png);
+				background-size: cover;
+				position: absolute;
+			}
+		</style>
+		<script type="text/javascript">
+			var box; //游戏背景
+			var player; //玩家
+			window.onload = function() {
+					box = document.getElementById("box");
+					player = document.getElementById("player")
+
+					//背景移动
+					bgStart();
+					//玩家移动
+					playerStart();
+					//敌机产生
+					Startenemy();
+				}
+				//获取样式
+			function getStyle(obj, attr) {
+				if(obj.currentStyle) {
+					return parseInt(obj.currentStyle[attr])
+				} else {
+					return parseInt(getComputedStyle(obj, false)[attr])
+				}
+			}
+			//背景移动
+			function bgStart() {
+				setInterval(function() {
+					box.style.backgroundPositionY = getStyle(box, "backgroundPositionY") + 10 + "px";
+				}, 50)
+			}
+			//玩家移动
+			function playerStart() {
+				document.onkeydown = function(e) {
+					e = e || window.event;
+					var code = e.keyCode;
+
+					switch(code) {
+						case 38: //up
+							if(getStyle(player, "bottom") + 10 < 640) {
+								player.style.bottom = getStyle(player, "bottom") + 10 + "px";
+							}
+							break;
+						case 40: //down
+							if(getStyle(player, "bottom") - 10 > 0) {
+								player.style.bottom = getStyle(player, "bottom") - 10 + "px";
+							}
+
+							break;
+						case 39: //right
+							if(getStyle(player, "left") + 10 < 406) {
+								player.style.left = getStyle(player, "left") + 10 + "px";
+							}
+
+							break;
+						case 37: //left
+							if(getStyle(player, "left") - 10 > 0) {
+								player.style.left = getStyle(player, "left") - 10 + "px";
+							}
+
+							break;
+
+						case 32:
+							sendBullet("red");
+							break;
+					}
+
+				}
+			}
+            //发射子弹
+			function sendBullet(color) {
+				var div = document.createElement("div");
+				div.className = "bullet";
+				div.style.backgroundColor = color;
+				div.style.left = player.offsetLeft + 11 + "px";
+				div.style.top = player.offsetTop - 8 + "px";
+				box.appendChild(div);
+				//子弹运动
+				startBullet(div,0,-10);
+			}
+			
+			//子弹运动
+			function startBullet(obj,Target,speed){
+				clearInterval(obj.times);
+				obj.times = setInterval(function(){
+					var curr = obj.offsetTop;
+					if(curr <= Target){
+						clearInterval(obj.times);
+						box.removeChild(obj);
+					}else{
+						obj.style.top = curr + speed + "px";
+						var enemyList = box.getElementsByClassName("enemy");
+						
+						for (var i = 0;i<enemyList.length;i++) {
+							var curr = enemyList[i]
+							if(enemyList[i].flag == true){
+								continue;
+							}
+							var flag = ifRam(obj.offsetLeft,obj.offsetTop,obj.offsetWidth,obj.offsetHeight,enemyList[i].offsetLeft,enemyList[i].offsetTop,enemyList[i].offsetWidth,enemyList[i].offsetHeight);
+							if(flag){
+								clearInterval(obj.times);
+								box.removeChild(obj);
+								clearInterval(enemyList[i].times);
+								enemyList[i].style.backgroundImage = "url(img/bomb.png)";
+								enemyList[i].flag = true;
+								setTimeout(function(){
+									box.removeChild(curr);
+								},500)
+								break;
+							}
+						}
+					}
+				},50)
+			}
+			
+			//敌机产生
+			function Startenemy(){
+				var times1 = setInterval(function(){
+					var enemy = document.createElement("div");
+					enemy.className = "enemy";
+					enemy.style.left = Math.random()*396 + "px";
+					enemy.style.top = -45+ "px";
+					box.appendChild(enemy);
+					enemyMove(enemy,600,10);
+				},1000)
+			}
+			//敌机运动
+			function enemyMove(obj,Target,speed){
+				clearInterval(obj.times);
+				obj.times = setInterval(function(){
+					var curr = obj.offsetTop;
+					if(curr >= Target){
+						clearInterval(obj.times);
+						box.removeChild(obj);
+					}else{
+						obj.style.top = curr + speed + "px";
+					}
+				},50)
+			}
+			
+			  /**
+    * 游戏碰撞检测工具类，用于矩形碰撞
+    * @author Administrator
+    *
+    */
+   /**
+    * 用于判断两个矩形是否相撞
+    * @param x1 第1个矩形左上角的X坐标
+    * @param y1 第1个矩形左上角的Y坐标
+    * @param w1 第1个矩形宽
+    * @param h1 第1个矩形高
+    * @param x2 第2个矩形左上角的X坐标
+    * @param y2 第2个矩形左上角的Y坐标
+    * @param w2 第2个矩形宽
+    * @param h2 第2个矩形高
+    * @return 返回boolean类型。返回true表示相撞了，返回false表示没有相撞。
+    */
+   function ifRam(x1,y1,w1,h1,x2,y2,w2,h2)
+   {
+       return !((x1 + w1 < x2) | (y1 + h1 < y2) | (x1 > x2 + w2) | (y1 > y2 + h2));
+   }
+			
+			
+			
+		</script>
+	</head>
+
+	<body>
+		<div id="box">
+			<img src="img/player.png" id="player" />
+			
+		</div>
+	</body>
+
+</html>
