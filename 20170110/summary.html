@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+				font-family: "微软雅黑";
+			}
+			
+			h1 {
+				width: auto;
+				height: 100px;
+				line-height: 100px;
+			}
+			
+			h3 {
+				width: auto;
+				height: 60px;
+				line-height: 60px;
+			}
+			
+			h5 {
+				height: 40px;
+				line-height: 40px;
+			}
+			
+			pre {
+				width: 900px;
+				height: auto;
+				background: lightyellow;
+				border: 2px solid grey;
+				border-radius: 10px;
+				margin-top: 30px;
+				margin-bottom: 30px;
+				padding: 5px;
+			}
+			
+			p {
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div style="width:1000px;height: auto;margin: auto;">
+			<h1>css3 media媒体查询器用法总结</h1>
+			<h3>准备工作：设置Meta标签</h3>
+			<p>首先我们在使用Media的时候需要先设置下面这段代码，来兼容移动设备的展示效果：</p>
+			<pre>
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+			</pre>
+			<p>这段代码的几个参数解释：</p>
+			<ul>
+				<li> width = device-width：宽度等于当前设备的宽度</li>
+				<li>initial-scale：初始的缩放比例（默认设置为1.0）  </li>
+				<li>minimum-scale：允许用户缩放到的最小比例（默认设置为1.0）    </li>
+				<li>maximum-scale：允许用户缩放到的最大比例（默认设置为1.0）</li>
+				<li>user-scalable：用户是否可以手动缩放（默认设置为no，因为我们不希望用户放大缩小页面）</li>
+			</ul>
+            <h3>进入CSS3 Media写法</h3>
+            <p>我们先来看下下面这段代码，估计很多人在响应式的网站CSS很经常看到类似下面的这段代码：</p>
+            <pre>
+    @media screen and (max-width: 960px){
+        body{
+            background: #000;
+        }
+    }
+            </pre>
+            <p>这个应该算是一个media的一个标准写法，上面这段CSS代码意思是：当页面小于960px的时候执行它下面的CSS.这个应该没有太大疑问。</p>
+            <p></p>
+            <p>应该有人会发现上面这段代码里面有个screen，他的意思是在告知设备在打印页面时使用衬线字体，在屏幕上显示时用无衬线字体。但是目前我发现很多网站都会直接省略screen,因为你的网站可能不需要考虑用户去打印时，你可以直接这样写：</p>
+            <pre>
+    @media (max-width: 960px){
+        body{
+            background: #000;
+        }
+    }
+            </pre>
+            <p>我们来实现等于960px尺寸的代码：</p>
+            <pre>
+    @media screen and (max-device-width:960px){
+        body{
+            background:red;
+        }
+    }
+            </pre>
+            <p>然后就是当浏览器尺寸大于960px时候的代码了：</p>
+            <pre>
+    @media screen and (min-width:960px){
+        body{
+            background:orange;
+        }
+    }
+            </pre>
+            <p>我们还可以混合使用上面的用法：</p>
+            <pre>
+    @media screen and (min-width:960px) and (max-width:1200px){
+        body{
+            background:yellow;
+        }
+    }
+            </pre>
+            <p>上面的这段代码的意思是当页面宽度大于960px小于1200px的时候执行下面的CSS。</p>
+            <h3>Media所有参数汇总</h3>
+            <p>以上就是我们最常需要用到的媒体查询器的三个特性，大于，等于，小于的写法。媒体查询器的全部功能肯定不止这三个功能，下面是我总结的它的一些参数用法解释：</p>
+            <ul>
+            	<li>width:浏览器可视宽度。</li>
+            	<li>height:浏览器可视高度。</li>
+            	<li>device-width:设备屏幕的宽度。</li>
+            	<li>device-height:设备屏幕的高度。</li>
+            	<li>orientation:检测设备目前处于横向还是纵向状态。</li>
+            	<li>aspect-ratio:检测浏览器可视宽度和高度的比例。(例如：aspect-ratio:16/9)</li>
+            	<li>device-aspect-ratio:检测设备的宽度和高度的比例。</li>
+            	<li>color:检测颜色的位数。（例如：min-color:32就会检测设备是否拥有32位颜色）</li>
+            	<li>color-index:检查设备颜色索引表中的颜色，他的值不能是负数。</li>
+            	<li>monochrome:检测单色楨缓冲区域中的每个像素的位数。（这个太高级，估计咱很少会用的到）</li>
+            	<li>resolution:检测屏幕或打印机的分辨率。(例如：min-resolution:300dpi或min-resolution:118dpcm)。</li>
+            	<li>grid：检测输出的设备是网格的还是位图设备。</li>
+            </ul>
+		</div>
+
+	</body>
+
+</html>
