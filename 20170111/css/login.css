@@ -1,0 +1,115 @@
+[class^='icon'] {
+	background: url(../img/iconBg.png);
+	background-size: 22px 250px;
+}
+
+.jd_layout{
+	width: 100%;
+	max-width: 640px;
+	min-width: 300px;
+	height: 700px;
+	margin: auto;
+	background: #F3F5F7;	
+}
+
+header{
+	width: 100%;
+	height: 45px;
+	background: bisque;
+	position: relative;
+	border-bottom: 1px solid gray;
+	background: #fff;
+}
+
+.icon_back{
+	width: 20px;
+	height: 22.5px;
+	position: absolute;
+	left: 15px;
+	top:11px;
+	background-position: 0px -62px;
+/*	background: green;*/
+}
+
+.title{
+	width: 100%;
+	height: 45px;
+	text-align: center;
+	line-height: 45px;
+}
+
+.jd_layout>form{
+	width: 90%;
+	height: 350px;
+	margin: auto;	
+}
+
+.jd_layout>form>input{
+	width: 100%;
+	height: 45px;
+	border:1px solid lightgray;
+	margin-top: 20px;
+	border-radius: 5px;
+}
+
+.jd_layout>form>img{
+	width: 30%;
+	vertical-align: middle;
+}
+
+.jd_layout>form>label{
+	width: 100%;
+	height: 20px;
+	margin-top: 20px;
+	display: block;
+}
+.jd_layout>form>label>span:first-child{
+	width: 20px;
+	height: 20px;
+	border-radius: 10px;
+	border:1px solid grey;
+	display:block;
+	float: left;
+}
+.jd_layout>form>label>span:last-child{
+	line-height: 20px;
+}
+.jd_layout>form>p{
+	width: 100%;
+	height: 20px;
+	color: red;
+	line-height: 20px;
+}
+.jd_layout>.service{
+	width: 90%;
+	height: 40px;
+	margin: auto;
+}
+.jd_layout>.service>.password_back{
+	width:90px;
+	height: 40px;
+	float:left;
+	line-height: 40px;
+}
+.jd_layout>.service>.register{
+	width:90px;
+	height: 40px;
+	float:right;
+	line-height: 40px;
+}
+
+.icon_locker{
+	width: 22px;
+	height: 20px;
+	float: left;
+	margin-top: 10px;
+	background-position: 0px -25px;
+}
+
+.icon_register{
+	width: 22px;
+	height: 20px;
+	float: left;
+	margin-top: 10px;
+	background-position: 0px -43px;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<!--<script src="lib/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>-->
+	</head>
+
+	<body>
+		<div class="jd_layout">
+			<header class="jd_header">
+				<div class="jd_headerbox">
+					<a href="#" class="icon_logo"></a>
+					<form action="">
+						<span class="icon_search"></span>
+						<input type="search" placeholder="1.11" />
+					</form>
+					<a href="login.html" class="login">登录</a>
+				</div>
+			</header>
+			<div class="jd_banner">
+				<ul id="imgList">
+					<li><img src="img/1.jpg" /></li>
+					<li><img src="img/2.jpg" /></li>
+					<li><img src="img/3.jpg" /></li>
+					<li><img src="img/4.jpg" /></li>
+					<li><img src="img/5.jpg" /></li>
+				</ul>
+				<ul id="points">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var imgList = document.getElementById("imgList");
+		var imgs = imgList.getElementsByTagName("img");
+
+		var imgWidth = imgs[0].width;
+		console.log(imgWidth)
+		var n = 0;
+		//		var times = setInterval(function(){
+		//			
+		//			if(n%imgWidth == 0){
+		//				setTimeout(function(){
+		//					n++;
+		//					imgList.style.marginLeft = -n+"px";
+		//				},1000)
+		//			}
+		//          if(n == imgWidth*4){
+		//          	n = 0;
+		//          }
+		//          n++;
+		//			imgList.style.marginLeft = -n+"px";
+		//		},10)
+		function times() {
+			n++;
+			imgList.style.marginLeft = -n + "px";
+			if(n % imgWidth == 0) {
+				setTimeout(times, 1000);
+			} else {
+				setTimeout(times, 10)
+			}
+			if(n == imgWidth * 4) {
+				n = 0;
+			}
+		}
+		times();
+	</script>
+
+</html>

@@ -1,0 +1,45 @@
+* {
+	margin: 0;
+	padding: 0;
+	/*清除移动端a标签点击高亮*/
+	-webkit-tap-highlight-color: transparent;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+body {
+	/*规定统一字体和大小以及前景色*/
+	font-size: 14px;
+	font-family: "Microsoft YaHei UI", sans-serif;
+	color: #333;
+}
+
+
+/*去掉下划线*/
+
+a {
+	color: #333;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+
+/*去除列表前面的 符号*/
+
+ul,
+ol {
+	list-style: none;
+}
+
+input {
+	border: none;
+	/*去除蓝边*/
+	outline: none;
+	-webkit-appearance: none;
+	appearance: none;
+}
+

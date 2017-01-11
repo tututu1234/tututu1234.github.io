@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/login.css" />
+	</head>
+
+	<body>
+		<div class="jd_layout">
+			<header>
+				<a href="index.html"><div class="icon_back"></div></a>
+				<div class="title">
+					京东登录
+				</div>
+			</header>
+			<form action="">
+				<input type="text" placeholder="用户名/邮箱/已验证手机" id="account"/>
+				<input type="password" placeholder="请输入密码" id="userpassword"/>
+				<input type="text" placeholder="请输入验证码" style="width: 70%;" id="code"/><img src="img/authcode.png" id="vertify"/>
+				<p id="warning"></p>
+				<input type="button"  value="登录"  id="loginButton"/>
+				<label for="">
+					<span></span>
+					<span>一个月内免登陆</span>
+				</label>
+			</form>
+			<div class="service">
+				<div class="password_back">
+					<div class="icon_locker">
+						
+					</div>
+					找回密码
+				</div>
+				<div class="register">
+					<div class="icon_register">
+						
+					</div>
+					立即注册
+				</div>
+			</div>
+		</div>
+
+	</body>
+    <script type="text/javascript">
+    	var loginButton = document.getElementById("loginButton");
+    	var warning = document.getElementById("warning");
+    	var account = document.getElementById("account");
+    	var userpassword = document.getElementById("userpassword");
+    	var code = document.getElementById("code");
+    	loginButton.onclick = function(){
+				//用户名验证
+				var phone = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
+				if (!phone.test(account.value)) {
+					warning.innerText = "账号不对";
+					return false;
+				} else{
+					warning.innerText = "";
+				};
+				//密码验证
+				var pasword = /^[a-zA-Z]\w{5,17}$/;
+				if(!pasword.test(userpassword.value)){
+					warning.innerText = "密码不对"
+					return false;
+				}else{
+					warning.innerText = "";
+				};
+				//验证码验证
+				if (code.value="") {
+					warning.innerText = "请填写验证码"
+					return false;
+				} else{
+					warning.innerText = "";
+				}
+				 return true;
+    	}
+    </script>
+</html>

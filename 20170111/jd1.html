@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>京东商城</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+
+            /*清除移动端a标签点击高亮显示*/
+            -webkit-tap-highlight-color: transparent;
+
+            /*规定盒子包括padding和border*/
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+        }
+
+        body{
+            /*规定统一字体和大小以及前景色*/
+            font-size: 14px;
+            font-family: "Microsoft YaHei UI",sans-serif;
+            color: #333;
+        }
+        /*去掉下划线*/
+        a{
+            color: #333;
+            text-decoration: none;
+        }
+        a:hover{
+            text-decoration: none;
+        }
+        /*去除列表前面的 符号*/
+        ul,ol{
+            list-style: none;
+        }
+
+
+        input{
+            /*格式化输入框*/
+            border:none;
+            outline:none;
+
+            /*简写样式*/
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        [class^="icon"]{
+            background: url("img/jd-sprites.png") no-repeat;
+            background-size: 200px 200px;
+        }
+
+
+
+
+
+
+
+
+
+        .jd_layout{
+            width:100%;
+            max-width:640px;
+            min-width: 300px;
+            margin: 0 auto;
+            height: 1000px;
+            position: relative;
+            /*background-color: darkviolet;*/
+        }
+
+        /*头部搜索*/
+        .jd_header{
+            position: fixed; /*window最外层计算*/
+            left:0;
+            top:0;
+
+            width:100%;
+
+            z-index: 1000;
+        }
+
+        .jd_header > .jd_header_box{
+            width:100%;
+            max-width:640px;
+            min-width: 300px;
+            margin: 0 auto;
+            background-color:rgba(201,21,35,.85);
+            height:40px;
+            position: relative;
+        }
+        .jd_header > .jd_header_box > .icon_logo{
+            width:60px;
+            height:36px;
+            position: absolute;
+            background-position: 0 -103px;
+            top:4px;
+            left:10px;
+
+        }
+
+        .jd_header > .jd_header_box > .login{
+            width:50px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            color: #ffffff;
+            position: absolute;
+            top:0;
+            right:0;
+            font-size: 15px;
+        }
+
+        .jd_header > .jd_header_box > form{
+            width:100%;
+            height: 40px;
+            padding-left: 75px;
+            padding-right: 50px;
+            position: relative;
+        }
+
+        .jd_header > .jd_header_box > form > input{
+            width:100%;
+            height: 30px;
+            border-radius: 15px;
+            margin-top: 5px;
+            padding-left: 30px;
+        }
+
+        .jd_header > .jd_header_box > form > .icon_search{
+            width:20px;
+            height: 20px;
+            position: absolute;
+            background-position: -60px -109px;
+            top:10px;
+            left:85px;
+        }
+    </style>
+</head>
+<body>
+<div class="jd_layout">
+    <header class="jd_header">
+        <div class="jd_header_box">
+            <!--京东logo-->
+            <a href="#" class="icon_logo"></a>
+
+            <!--点击form表单时，会发送请求  热门搜索数据-->
+            <form action="#">
+                <span class="icon_search"></span>
+                <input type="search" placeholder="提示">
+            </form>
+
+            <a href="#" class="login">登陆</a>
+        </div>
+    </header>
+</div>
+</body>
+</html>

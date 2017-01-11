@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+				font-family: "微软雅黑";
+			}
+			
+			h1 {
+				width: auto;
+				height: 100px;
+				line-height: 100px;
+			}
+			
+			h3 {
+				width: auto;
+				height: 60px;
+				line-height: 60px;
+			}
+			
+			h5 {
+				height: 40px;
+				line-height: 40px;
+			}
+			
+			pre {
+				width: 900px;
+				height: auto;
+				background: lightyellow;
+				border: 2px solid grey;
+				border-radius: 10px;
+				margin-top: 30px;
+				margin-bottom: 30px;
+				padding: 5px;
+			}
+			
+			p {
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div style="width:1000px;height: auto;margin: auto;">
+			<h1>移动端网页布局中需要注意事项以及解决方法总结</h1>
+			<h5>winphone系统a、input标签被点击时产生的半透明灰色背景怎么去掉</h5>
+			<p>&lt;meta name="msapplication-tap-highlight" content="no"></p>
+			<h5>1、关闭iOS键盘首字母自动大写</h5>
+			<p>&lt;input type="text" autocapitalize="off" /></p>
+			<h5>2、禁止文本缩放</h5>
+			<pre>
+html {
+-webkit-text-size-adjust: 100%;
+}
+</pre>
+			<h5>3、移动端如何清除输入框内阴影</h5>
+			<p>在iOS上，输入框默认有内部阴影，但无法使用 box-shadow 来清除，如果不需要阴影，可以这样关闭：</p>
+			<pre>
+input,
+textarea {
+border: 0;
+-webkit-appearance: none;
+}
+</pre>
+			<h5>4、忽略页面的数字为电话，忽略email识别</h5>
+			<p>
+				&lt;meta name="format-detection" content="telephone=no, email=no"/></p>
+			<h5>5、快速回弹滚动</h5>
+			<pre>
+.xxx {
+overflow: auto;
+-webkit-overflow-scrolling: touch;
+}
+</pre>
+
+			<p>PS：iScroll用过之后感觉不是很好，有一些诡异的bug，这里推荐另外一个 iDangero Swiper，这个插件集成了滑屏滚动的强大功能（支持3D），而且还有回弹滚动的内置滚动条，官方地址： http://www.idangero.us/sliders/swiper/index.php
+			</p>
+			<h5>6、移动端禁止选中内容</h5>
+			<pre>
+div {
+-webkit-user-select: none;
+}	
+</pre>
+
+			<h5>7、移动端取消touch高亮效果</h5>
+			<p>在做移动端页面时，会发现所有a标签在触发点击时或者所有设置了伪类 :active 的元素，默认都会在激活状态时，显示高亮框，如果不想要这个高亮，那么你可以通过css以下方法来禁止：</p>
+			<pre>
+.xxx {
+-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}	
+</pre>
+
+			<h5>8、如何禁止保存或拷贝图像</h5>
+			<p>通常当你在手机或者pad上长按图像 img ，会弹出选项 存储图像 或者 拷贝图像，如果你不想让用户这么操作，那么你可以通过以下方法来禁止：</p>
+			<pre>
+img {
+-webkit-touch-callout: none;
+}
+</pre>
+
+			<p>PS：需要注意的是，该方法只在 iOS 上有效。</p>
+			<h5>9、解决字体在移动端比例缩小后出现锯齿的问题</h5>
+			<p>-webkit-font-smoothing: antialiased;</p>
+			<h5>10、栅格布局：</h5>
+			<p>box-sizing:border-box;可以改变盒子模型的计算方式方便你设置宽进行自适应流式布局</p>
+            <h3><a href="index.html">实例</a></h3>
+		</div>
+
+	</body>
+
+</html>
