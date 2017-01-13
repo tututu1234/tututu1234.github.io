@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+				font-family: "微软雅黑";
+			}
+			
+			h1 {
+				width: auto;
+				height: 100px;
+				line-height: 100px;
+			}
+			
+			h3 {
+				width: auto;
+				height: 60px;
+				line-height: 60px;
+			}
+			
+			h5 {
+				height: 40px;
+				line-height: 40px;
+			}
+			
+			pre {
+				width: 1000px;
+				height: auto;
+				background: lightyellow;
+				border: 2px solid grey;
+				border-radius: 10px;
+				margin-top: 30px;
+				margin-bottom: 30px;
+				padding: 5px;
+			}
+			
+			p {
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div style="width:1000px;height: auto;margin: auto;">
+			<pre>
+&lt;!DOCTYPE html> &lt;!-- 使用 HTML5 doctype，不区分大小写 -->
+&lt;html lang="zh-cmn-Hans"> &lt;!-- 更加标准的 lang 属性写法 http://zhi.hu/XyIa -->
+&lt;head>
+    &lt;!-- 声明文档使用的字符编码 -->
+    &lt;meta charset='utf-8'>
+    &lt;!-- 优先使用 IE 最新版本和 Chrome -->
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    &lt;!-- 页面描述 -->
+    &lt;meta name="description" content="不超过150个字符"/>
+    &lt;!-- 页面关键词 -->
+    &lt;meta name="keywords" content=""/>
+    &lt;!-- 网页作者 -->
+    &lt;meta name="author" content="name, email@gmail.com"/>
+    &lt;!-- 搜索引擎抓取 -->
+    &lt;meta name="robots" content="index,follow"/>
+    &lt;!-- 为移动设备添加 viewport -->
+    &lt;meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+    &lt;!-- `width=device-width` 会导致 iPhone 5 添加到主屏后以 WebApp 全屏模式打开页面时出现黑边
+     http://bigc.at/ios-webapp-viewport-meta.orz -->
+
+    &lt;!-- iOS 设备 begin -->
+    &lt;meta name="apple-mobile-web-app-title" content="标题">
+    &lt;!-- 添加到主屏后的标题（iOS 6 新增） -->
+    &lt;meta name="apple-mobile-web-app-capable" content="yes"/>
+    &lt;!-- 是否启用 WebApp 全屏模式，删除苹果默认的工具栏和菜单栏 -->
+
+    &lt;meta name="apple-itunes-app" content="app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL">
+    &lt;!-- 添加智能 App 广告条 Smart App Banner（iOS 6+ Safari） -->
+    &lt;meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    &lt;!-- 设置苹果工具栏颜色 -->
+    &lt;meta name="format-detection" content="telphone=no, email=no"/>
+    &lt;!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    &lt;!-- 启用360浏览器的极速模式(webkit) -->
+    &lt;meta name="renderer" content="webkit">
+    &lt;!-- 避免IE使用兼容模式 -->
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge">
+    &lt;!-- 不让百度转码 -->
+    &lt;meta http-equiv="Cache-Control" content="no-siteapp" />
+    &lt;!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    &lt;meta name="HandheldFriendly" content="true">
+    &lt;!-- 微软的老式浏览器 -->
+    &lt;meta name="MobileOptimized" content="320">
+    &lt;!-- uc强制竖屏 -->
+    &lt;meta name="screen-orientation" content="portrait">
+    &lt;!-- QQ强制竖屏 -->
+    &lt;meta name="x5-orientation" content="portrait">
+    &lt;!-- UC强制全屏 -->
+    &lt;meta name="full-screen" content="yes">
+    &lt;!-- QQ强制全屏 -->
+    &lt;meta name="x5-fullscreen" content="true">
+    &lt;!-- UC应用模式 -->
+    &lt;meta name="browsermode" content="application">
+    &lt;!-- QQ应用模式 -->
+    &lt;meta name="x5-page-mode" content="app">
+    &lt;!-- windows phone 点击无高光 -->
+    &lt;meta name="msapplication-tap-highlight" content="no">
+    &lt;!-- iOS 图标 begin -->
+    &lt;link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57x57-precomposed.png"/>
+    &lt;!-- iPhone 和 iTouch，默认 57x57 像素，必须有 -->
+    &lt;link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114-precomposed.png"/>
+    &lt;!-- Retina iPhone 和 Retina iTouch，114x114 像素，可以没有，但推荐有 -->
+    &lt;link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144-precomposed.png"/>
+    &lt;!-- Retina iPad，144x144 像素，可以没有，但推荐有 -->
+    &lt;!-- iOS 图标 end -->
+
+    &lt;!-- iOS 启动画面 begin -->
+    &lt;link rel="apple-touch-startup-image" sizes="768x1004" href="/splash-screen-768x1004.png"/>
+    &lt;!-- iPad 竖屏 768 x 1004（标准分辨率） -->
+    &lt;link rel="apple-touch-startup-image" sizes="1536x2008" href="/splash-screen-1536x2008.png"/>
+    &lt;!-- iPad 竖屏 1536x2008（Retina） -->
+    &lt;link rel="apple-touch-startup-image" sizes="1024x748" href="/Default-Portrait-1024x748.png"/>
+    &lt;!-- iPad 横屏 1024x748（标准分辨率） -->
+    &lt;link rel="apple-touch-startup-image" sizes="2048x1496" href="/splash-screen-2048x1496.png"/>
+    &lt;!-- iPad 横屏 2048x1496（Retina） -->
+
+    &lt;link rel="apple-touch-startup-image" href="/splash-screen-320x480.png"/>
+    &lt;!-- iPhone/iPod Touch 竖屏 320x480 (标准分辨率) -->
+    &lt;link rel="apple-touch-startup-image" sizes="640x960" href="/splash-screen-640x960.png"/>
+    &lt;!-- iPhone/iPod Touch 竖屏 640x960 (Retina) -->
+    &lt;link rel="apple-touch-startup-image" sizes="640x1136" href="/splash-screen-640x1136.png"/>
+    &lt;!-- iPhone 5/iPod Touch 5 竖屏 640x1136 (Retina) -->
+    &lt;!-- iOS 启动画面 end -->
+
+    &lt;!-- iOS 设备 end -->
+    &lt;meta name="msapplication-TileColor" content="#000"/>
+    &lt;!-- Windows 8 磁贴颜色 -->
+    &lt;meta name="msapplication-TileImage" content="icon.png"/>
+    &lt;!-- Windows 8 磁贴图标 -->
+
+    &lt;link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml"/>
+    &lt;!-- 添加 RSS 订阅 -->
+    &lt;link rel="shortcut icon" type="image/ico" href="/favicon.ico"/>
+    &lt;!-- 添加 favicon icon -->
+
+    &lt;!-- sns 社交标签 begin -->
+    &lt;!-- 参考微博API -->
+    &lt;meta property="og:type" content="类型" />
+    &lt;meta property="og:url" content="URL地址" />
+    &lt;meta property="og:title" content="标题" />
+    &lt;meta property="og:image" content="图片" />
+    &lt;meta property="og:description" content="描述" />
+    &lt;!-- sns 社交标签 end -->
+
+    &lt;title>标题&lt;/title>
+&lt;/head>
+&lt;body>
+
+&lt;/body>
+&lt;/html>
+			</pre>
+
+		</div>
+
+	</body>
+
+</html>
