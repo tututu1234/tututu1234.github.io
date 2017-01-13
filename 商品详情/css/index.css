@@ -1,0 +1,101 @@
+@media all and (min-width: 320px) {
+    html{
+        font-size:50px;
+    }
+}
+@media all and (min-width: 360px) {
+    html{
+        font-size:56.25px;
+    }
+}
+@media all and (min-width: 400px) {
+    html{
+        font-size:62.5px;
+    }
+}
+@media all and (min-width: 440px) {
+    html{
+        font-size:68.75px;
+    }
+}
+@media all and (min-width: 600px) {
+    html{
+        font-size:93.75px;
+    }
+}
+@media all and (min-width: 640px) {
+    html{
+        font-size:100px;
+    }
+}
+@media all and (min-width: 800px) {
+    html{
+        font-size:125px;
+    }
+}
+.title{
+    width:100%;
+    background-color:#f2473d;
+    height:0.88rem;
+    margin:auto;
+    text-align: center;
+    line-height: 0.88rem;
+    font-size: 0.36rem;
+    color: white;
+    font-weight: bolder;
+    position: relative;
+}
+.title>img{
+    height:0.4rem;
+    padding:0.24rem 0.1rem;
+    position: absolute;
+    left: 0;
+}
+.lunbo{
+    height: 4.5rem;
+    margin: auto;
+    width: 6.4rem;
+    cursor: pointer;
+    overflow: hidden;
+}
+.lunbo_img{
+    height: 3.6rem;
+    width: 6.4rem;
+    position: relative;
+}
+#lunbo{
+    position: absolute;
+    width: 44.8rem;
+    height: 3.6rem;
+    left: -6.4rem;
+}
+#lunbo>img{
+    float: left;
+    width: 6.4rem;
+    height: 3.6rem;
+}
+.lunbo_dot{
+    position: absolute;
+    height: 0.1rem;
+    width: 0.75rem;
+    bottom: 0.3rem;
+    left: 2.85rem;
+}
+.lunbo_dot>div{
+    width: 0.1rem;
+    height: 0.1rem;
+    border: 0.01rem solid white;
+    border-radius: 50%;
+    float: left;
+    box-sizing: border-box;
+}
+.lunbo_dot>div:nth-child(2n){
+    margin: 0 0.05rem;
+}
+.dotone{
+    background-color: white;
+}
+.lunbo_details{
+    height: 0.9rem;
+    background-color: aqua;
+}
