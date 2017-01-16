@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			.banner{
+				width: 1216px;
+				height: 384px;
+				margin: auto;
+				position: relative;
+			}
+			#img{
+				position: absolute;
+			}
+			.selecter{
+				width: 900px;
+				height: 50px;
+				background: black;
+				opacity: 0.7;
+				position: absolute;
+				top:300px;
+				left: 158px;
+			}
+			.selecter>#left,#right{
+				width: 50px;
+				height: 50px;
+				text-align: center;
+				line-height: 50px;
+				float: left;
+				font-size: 30px;
+				color:#fff;
+				cursor: pointer;
+			}
+			#right{
+				float: right;
+			}
+			.selecter>.imgList{
+				width: 500px;
+				height: 50px;
+				float: left;
+			}
+			.selecter>.imgList>ul>li{
+				width: 48px;
+				height: 48px;
+				line-height: 50px;
+				vertical-align: middle;
+				margin-left: 3px;
+				float: left;
+				border:1px solid transparent;
+			}
+			.selecter>.imgList>ul>li>img{
+				width: 48px;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="banner">
+			<img src="img/1.jpg" id="img"/>
+			<div class="selecter">
+				<div id="left">
+					&lt;
+				</div>
+				<div class="imgList">
+					<ul>
+						<li style="border:1px solid darkorange"><img src="img/15.jpg"/ ></li>
+						<li><img src="img/10.jpg"/></li>
+						<li><img src="img/11.jpg"/></li>
+						<li><img src="img/9.jpg"/></li>
+						<li><img src="img/16.jpg"/></li>
+						<li><img src="img/14.jpg"/></li>
+						<li><img src="img/12.jpg"/></li>
+						<li><img src="img/13.jpg"/></li>
+					</ul>
+				</div>
+				<div id="right">
+					&gt;
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var img = document.getElementById("img");
+		var imgArr = ["img/1.jpg","img/6.jpg","img/2.jpg","img/3.jpg","img/8.jpg","img/5.jpg","img/7.jpg","img/4.jpg"];
+		var imgList = document.getElementsByClassName("imgList");
+		var list = imgList[0].getElementsByTagName("li");
+		var left = document.getElementById("left");
+		var right = document.getElementById("right");
+		var n = 0;
+		var m;
+		//初始化
+		img.src = imgArr[n];
+		//鼠标移入,移出
+		for (var j = 0;j<list.length;j++) {
+			list[j].cool = j;
+			list[j].onmouseenter = function(){
+				clearInterval(times);
+				reset();
+				this.style.border = "1px solid darkorange";
+				img.src = imgArr[this.cool];
+				n = this.cool;
+			}
+			list[j].onmouseleave = function(){
+				n++;
+				times = setInterval(imgChange,1000);
+			}
+		}
+		//自动轮播
+		var times = setInterval(imgChange,1000);
+		function imgChange(){
+			m = n;
+			img.src = imgArr[n];
+			reset();
+			list[n].style.border = "1px solid darkorange";
+			n++;
+			console.log(n)
+			if(n == imgArr.length){
+				n = 0;
+			}
+		}
+		
+		//重置
+		function reset(){
+			for (var i = 0 ;i<list.length;i++) {
+				list[i].style.border = "1px solid transparent";
+			}
+		}
+		
+		//向左
+		left.onmouseenter = function(){
+			clearInterval(times);
+		}
+		left.onclick = function(){
+			if(m>0){
+				m--;
+			}else{
+				m = imgArr.length-1;
+			}
+			img.src = imgArr[m];
+			n = m;
+			reset();
+			list[n].style.border = "1px solid darkorange";
+			
+		}
+		left.onmouseleave = function(){
+			times = setInterval(imgChange,1000);
+		}
+		
+		//向右
+		right.onmouseenter = function(){
+			clearInterval(times);
+		}
+		right.onclick = function(){
+			imgChange();
+		}
+		right.onmouseleave = function(){
+			times = setInterval(imgChange,1000)
+		}
+	</script>
+</html>

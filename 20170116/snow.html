@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				background: #000000;
+			}
+			
+			#bg {
+				width: 1024px;
+				height: 800px;
+				margin: auto;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			.snow {
+				position: absolute;
+				top: 0;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var bg = document.getElementById('bg');
+
+				function createSnow() {
+					var snow = document.createElement('img');
+					snow.className = "snow";
+					snow.src = "img/snow.png";
+					snow.style.width=parseInt(Math.random() * 10)+10 + "px";
+					snow.style.left = parseInt(Math.random() * 1024) + "px";
+					bg.appendChild(snow);
+					snowMove(snow,800,10);
+//					var s = parseInt(Math.random() * 2) + 1;
+//					createSnow(s);
+				}
+				
+				
+				//雪花下落
+				function snowMove(obj, Target, speed) {
+					clearInterval(obj.times);
+					obj.times = setInterval(function() {
+						var curr = obj.offsetTop;
+						if(curr >= Target) {
+							clearInterval(obj.times);
+							bg.removeChild(obj);
+						} else {
+							obj.style.top = curr + speed + "px";
+						}
+					}, 50)
+				}
+
+				setInterval(createSnow, 100);
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="bg">
+
+		</div>
+	</body>
+
+</html>
