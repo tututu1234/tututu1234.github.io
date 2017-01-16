@@ -108,11 +108,11 @@
 			}
 			list[j].onmouseleave = function(){
 				n++;
-				times = setInterval(imgChange,1000);
+				times = setInterval(imgChange,3000);
 			}
 		}
 		//自动轮播
-		var times = setInterval(imgChange,1000);
+		var times = setInterval(imgChange,3000);
 		function imgChange(){
 			m = n;
 			img.src = imgArr[n];
@@ -149,7 +149,7 @@
 			
 		}
 		left.onmouseleave = function(){
-			times = setInterval(imgChange,1000);
+			times = setInterval(imgChange,3000);
 		}
 		
 		//向右
@@ -160,7 +160,7 @@
 			imgChange();
 		}
 		right.onmouseleave = function(){
-			times = setInterval(imgChange,1000)
+			times = setInterval(imgChange,3000)
 		}
 	</script>
 </html>
