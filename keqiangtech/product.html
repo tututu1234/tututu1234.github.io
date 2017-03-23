@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<script src="js/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+	</head>
+
+	<body>
+		<div class="nbg">
+			<div class="about_content">
+				<div class="content_left">
+					<div class="left_nav">
+						<div class="nlogo">
+							<a href="index.html">
+								<img src="img/nlogo.png" />
+							</a>
+						</div>
+						<div class="nav nav1">
+							<a href="about.html">
+								<span class="span1">
+                     				<img src="img/nav1.png"/>
+                     			</span>
+                     			<span class="span2">
+                     				<img src="img/nav1o.png"/>
+                     			</span>
+							</a>
+						</div>
+
+						<div class="nav nav2">
+							<a href="product.html">
+								<span class="span1" style="opacity: 0;">
+                     				<img src="img/nav2.png"/>
+                     			</span>
+                     			<span class="span2" style="opacity: 1;">
+                     				<img src="img/nav2o.png"/>
+                     			</span>
+							</a>
+						</div>
+
+						<div class="nav nav3">
+							<a href="tech.html">
+								<span class="span1">
+                     				<img src="img/nav3.png"/>
+                     			</span>
+                     			<span class="span2" >
+                     				<img src="img/nav3o.png"/>
+                     			</span>
+							</a>
+						</div>
+						<div class="nav nav4">
+							<a href="news.html">
+								<span class="span1">
+                     				<img src="img/nav4.png"/>
+                     			</span>
+                     			<span class="span2">
+                     				<img src="img/nav4o.png"/>
+                     			</span>
+							</a>
+						</div>
+						<div class="nav nav5">
+							<a href="recru.html">
+								<span class="span1">
+                     				<img src="img/nav5.png"/>
+                     			</span>
+                     			<span class="span2">
+                     				<img src="img/nav5o.png"/>
+                     			</span>
+							</a>
+						</div>
+						<div class="nav nav6">
+							<a href="contact.html">
+								<span class="span1">
+                     				<img src="img/nav6.png"/>
+                     			</span>
+                     			<span class="span2">
+                     				<img src="img/nav6o.png"/>
+                     			</span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="content_right">
+					<div class="bt"><span>产品中心</span> / PRODUCTS CENTER</div>
+				<ul class="pdh">
+					<li class="pdh1">
+						<a href="product1.html">工业4.0信息中心</a>
+					</li>
+					<li class="pdh2">
+						<a href="">精密注塑控制系统</a>
+					</li>
+					<li class="pdh3">
+						<a href="">工业节能</a>
+					</li>
+				</ul>
+
+				<div class="pro">
+
+					<ul class="fold_wrap" id="sm">
+						<li>
+							<a href="">
+								<div class="pic_auto" style="background:url('img/product1.png') no-repeat center center; ">
+									<div class="smwzs">工业4.0信息中心</div>
+									<div class="smwz">工业4.0信息中心</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<div class="pic_auto" style="background:url('img/product2.png') no-repeat center center; ">
+									<div class="smwzs">注塑控制系统</div>
+									<div class="smwz">注塑控制系统</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<div class="pic_auto" style="background:url('img/product3.png') no-repeat center center; ">
+									<div class="smwzs">高效纳米节能环</div>
+									<div class="smwz">高效纳米节能环</div>
+								</div>
+							</a>
+						</li>
+
+					</ul>
+
+				</div>
+	
+				<div class="xwitdh"></div>
+
+				</div>
+			</div>
+			<footer>
+				Copyright ©2015 浙江科强智能控制系统有限公司 All Rights Reserved 备案号：浙ICP备16000621号-1
+			</footer>
+		</div>
+
+	</body>
+	<script src="js/all.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+    	$(function(){
+		$(".fold_wrap li").mouseover(function(){
+			_index7=$(this).index();
+			$(this).stop().animate({width:666},500).siblings("li").stop().animate({width:102},500);
+			$(".smwz").eq(_index7).css("opacity",0).siblings(".smwz").css("opacity",1);
+			$(".smwzs").eq(_index7).stop().animate({left:50,opacity:1},500).siblings(".smwzs").css("opacity",0);
+		});
+		$(".fold_wrap li").mouseleave(function(){
+			_index7=$(this).index();
+			$(this).stop().animate({width:290},500).siblings("li").stop().animate({width:290},500);
+			$(".smwz").eq(_index7).css("opacity",1).siblings(".smwz").css("opacity",0);
+			$(".smwzs").eq(_index7).stop().animate({left:-290,opacity:0},500).siblings(".smwzs").css("opacity",1);
+		})
+	})
+
+    </script>
+</html>

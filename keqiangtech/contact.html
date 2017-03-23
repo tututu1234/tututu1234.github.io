@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<script src="js/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+	</head>
+
+	<body>
+		<div class="nbg">
+			<div class="about_content">
+				<div class="content_left">
+					<div class="left_nav">
+						<div class="nlogo">
+							<a href="index.html">
+								<img src="img/nlogo.png" />
+							</a>
+						</div>
+						<div class="nav nav1">
+							<a href="about.html">
+								<span class="span1">
+                     				<img src="img/nav1.png"/>
+                     			</span>
+								<span class="span2">
+                     				<img src="img/nav1o.png"/>
+                     			</span>
+							</a>
+						</div>
+
+						<div class="nav nav2">
+							<a href="product.html">
+								<span class="span1">
+                     				<img src="img/nav2.png"/>
+                     			</span>
+								<span class="span2">
+                     				<img src="img/nav2o.png"/>
+                     			</span>
+							</a>
+						</div>
+
+						<div class="nav nav3">
+							<a href="tech.html">
+								<span class="span1">
+                     				<img src="img/nav3.png"/>
+                     			</span>
+								<span class="span2">
+                     				<img src="img/nav3o.png"/>
+                     			</span>
+							</a>
+						</div>
+						<div class="nav nav4">
+							<a href="news.html">
+								<span class="span1">
+                     				<img src="img/nav4.png"/>
+                     			</span>
+								<span class="span2">
+                     				<img src="img/nav4o.png"/>
+                     			</span>
+							</a>
+						</div>
+						<div class="nav nav5">
+							<a href="recru.html">
+								<span class="span1">
+                     				<img src="img/nav5.png"/>
+                     			</span>
+								<span class="span2">
+                     				<img src="img/nav5o.png"/>
+                     			</span>
+							</a>
+						</div>
+						<div class="nav nav6">
+							<a href="contact.html">
+								<span class="span1" style="opacity: 0;">
+                     				<img src="img/nav6.png"/>
+                     			</span>
+								<span class="span2" style="opacity: 1;">
+                     				<img src="img/nav6o.png"/>
+                     			</span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="content_right">
+					<div class="bt"><span>联系我们</span> / CONTACT US</div>
+					<div class="bt_text">科强愿为您提供最为可靠的解决方案和最捷迅的服务</div>
+
+					<div class="contact">
+
+						<div class="cus">
+							<div class="cusbt">科强智能控制系统有限公司 <span></span></div>
+							<ul class="cadd">
+								<li class="cadd1">地址：杭州市拱墅区申花路88号
+								</li>
+								<li class="cadd2">公司总机：0571-88088346
+								</li>
+								<li class="cadd3">市场服务部：0571-88088345
+								</li>
+								<li class="cadd4">公司传真：0571-88366823
+								</li>
+								<li class="cadd5">官网：Http://www.kq-china.net</li>
+								<li class="cadd6">邮箱：HZKQ@vip.163.com</li>
+
+							</ul>
+
+							<div class="wx"><img src="img/2016011510493356985e3d59e60.png" /></div>
+
+						</div>
+						<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+						<div style="width:100%;height:540px; font-size:12px" id="map"></div>
+						<script type="text/javascript">
+							//创建和初始化地图函数：
+							function initMap() {
+								createMap(); //创建地图
+								setMapEvent(); //设置地图事件
+								addMapControl(); //向地图添加控件
+								addMapOverlay(); //向地图添加覆盖物
+							}
+
+							function createMap() {
+								map = new BMap.Map("map");
+								map.centerAndZoom(new BMap.Point(120.112649, 30.316219), 18);
+							}
+
+							function setMapEvent() {
+								map.enableScrollWheelZoom();
+								map.enableKeyboard();
+								map.enableDragging();
+								map.enableDoubleClickZoom()
+							}
+
+							function addClickHandler(target, window) {
+								target.addEventListener("click", function() {
+									//target.openInfoWindow(window);
+								});
+							}
+
+							function addMapOverlay() {
+								var markers = [{
+									content: "",
+									title: "",
+									imageOffset: {
+										width: -46,
+										height: -21
+									},
+									position: {
+										lat: 30.316219,
+										lng: 120.112649
+									}
+								}];
+								for(var index = 0; index < markers.length; index++) {
+									var point = new BMap.Point(markers[index].position.lng, markers[index].position.lat);
+									var marker = new BMap.Marker(point, {
+										icon: new BMap.Icon("http://api.map.baidu.com/lbsapi/createmap/images/icon.png", new BMap.Size(20, 25), {
+											imageOffset: new BMap.Size(markers[index].imageOffset.width, markers[index].imageOffset.height)
+										})
+									});
+									var label = new BMap.Label(markers[index].title, {
+										offset: new BMap.Size(25, 5)
+									});
+									var opts = {
+										width: 200,
+										title: markers[index].title,
+										enableMessage: false
+									};
+									var infoWindow = new BMap.InfoWindow(markers[index].content, opts);
+									marker.setLabel(label);
+									addClickHandler(marker, infoWindow);
+									map.addOverlay(marker);
+								};
+							}
+							//向地图添加控件
+							function addMapControl() {
+								var scaleControl = new BMap.ScaleControl({
+									anchor: BMAP_ANCHOR_BOTTOM_LEFT
+								});
+								scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+								map.addControl(scaleControl);
+								var navControl = new BMap.NavigationControl({
+									anchor: BMAP_ANCHOR_TOP_LEFT,
+									type: BMAP_NAVIGATION_CONTROL_LARGE
+								});
+								map.addControl(navControl);
+							}
+							var map;
+							initMap();
+						</script>
+
+					</div>
+				</div>
+
+			</div>
+			<footer>
+				Copyright ©2015 浙江科强智能控制系统有限公司 All Rights Reserved 备案号：浙ICP备16000621号-1
+			</footer>
+
+	</body>
+	<script src="js/all.js" type="text/javascript" charset="utf-8"></script>
+
+	</div>
+	</div>
+	</div>
+
+</html>
