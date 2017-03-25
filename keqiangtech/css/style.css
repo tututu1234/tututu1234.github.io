@@ -645,3 +645,169 @@ footer {
 .el-carousel__item:nth-child(2n+1) {
 	background: url(../img/honor02.jpg) no-repeat;
 }
+
+
+/*products*/
+
+.pdh {
+	padding-top: 40px;
+}
+
+.pdh li {
+	display: inline-block;
+	font-size: 16px;
+	line-height: 16px;
+	padding-right: 14px;
+}
+
+.pdh1 {
+	border-right: 1px solid #0e4e96;
+	color: #72bf44;
+}
+
+.pdh2 {
+	padding-left: 14px;
+	border-right: 1px solid #0e4e96;
+	color: #f58220;
+}
+
+.pdh3 {
+	padding-left: 14px;
+	color: #0e4e96;
+}
+
+.pdh1 a {
+	color: #72bf44;
+}
+
+.pdh2 a {
+	color: #f58220;
+}
+
+.pdh3 a {
+	color: #0e4e96;
+}
+
+.fold_wrap {
+	width: 870px;
+	height: 560px;
+	overflow: hidden;
+	margin: 0 auto;
+	margin-top: 60px;
+	padding-bottom: 40px;
+}
+
+.fold_wrap li {
+	float: left;
+	width: 290px;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+	position: relative;
+}
+
+.pic_auto {
+	width: 100%;
+	height: 100%;
+	margin: 0px 2px;
+}
+
+.smwz {
+	position: absolute;
+	left: 50%;
+	bottom: 15px;
+	color: #fff;
+	width: 26px;
+	font-size: 26px;
+	margin-left: -13px;
+	line-height: 26px;
+	opacity: 1;
+}
+
+.smwzs {
+	position: absolute;
+	left: -290px;
+	top: 44px;
+	color: #fff;
+	font-size: 32px;
+	opacity: 0;
+}
+
+.xwitdh {
+	width: 666px;
+	display: none;
+	overflow: hidden;
+}
+
+
+/*product1*/
+
+.rndav {
+	padding-top: 26px;
+	font-size: 0px;
+}
+
+.rndav li {
+	display: inline-block;
+	height: 36px;
+	line-height: 34px;
+	border-radius: 4px;
+	overflow: hidden;
+	font-size: 14px;
+	margin-right: 6px;
+}
+
+.rndav li a {
+	color: #505050;
+	padding: 0px 16px;
+	display: inline-block;
+	border-radius: 4px;
+}
+
+.rndav li a:hover {
+	background-color: #f58220;
+	border-bottom: 2px solid #c25900;
+	color: #fff;
+}
+
+.rndav li a.ndavo {
+	color: #fff;
+	background-color: #f58220;
+	border-bottom: 2px solid #c25900;
+}
+
+.endh {
+	padding-top: 14px;
+	font-size: 0px;
+	border-bottom: 1px solid #c3c3c3;
+}
+
+.endh li {
+	display: inline-block;
+	height: 32px;
+	line-height: 30px;
+	border-radius: 4px;
+	overflow: hidden;
+	font-size: 14px;
+	margin-right: 6px;
+}
+
+.endh li a {
+	color: #505050;
+	padding: 0px 12px;
+	display: inline-block;
+	border-radius: 4px;
+}
+
+.endh li a:hover {
+	background-color: #f58220;
+	border-bottom: 2px solid #c25900;
+	color: #fff;
+}
+
+.endh li a.endho {
+	color: #fff;
+	background-color: #f58220;
+	border-bottom: 2px solid #c25900;
+}
