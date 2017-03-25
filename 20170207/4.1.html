@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="bootstrap-3.3.7-dist/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h1>{{titleMsg}}</h1>
+			<div>pm2.5 : {{pm25}}</div>
+			<button v-on:click = "showData()">click</button>
+		</div>
+		
+		<script type="text/javascript">
+		    var _url = "http://api.map.baidu.com/telematics/v3/weather";
+		    var data = {
+		    	location:"hangzhou",
+		    	output:"json",
+		    	ak:"LGx30zYCQjEReAvW2cRDDRtf3HuQ05at"
+		    }
+			new Vue({
+				el:"#app",
+				data:{
+					pm25:"113",
+					titleMsg:"杭州"
+				},
+				methods:{
+					showData:function(){
+						var pm25 = this.pm25;
+						$.ajax({
+							type:"get",
+							url:_url,
+							dataType:"jsonp",
+							data:data,
+							sucess:function(msg){
+								console.log("passed");
+								console.log(msg);
+								if(msg.error == 0 && msg.status == "success"){
+									var results = msg.results;
+									var resultsL = results.length;
+									
+									var pm25;
+									for (var i = 0;i<resultsL;i++) {
+										var cityData = results[i];
+										pm25 = cityData.pm25;
+									}
+								}
+							},
+							error:function(error){
+								console.log("fail");
+								console.log(error);
+							}
+						});
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

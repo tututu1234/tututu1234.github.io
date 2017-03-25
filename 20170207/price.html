@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="bootstrap-3.3.7-dist/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+		<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.box{
+				width: 300px;
+				margin: auto;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="container box text-center">
+			<h2>Shoplist</h2>
+			<ul class="list-group" id="fruits">
+				<li v-for = "item in fruitlist" v-on:click = "calculate(item)" class="list-group-item">{{item.name+":"+item.price}}</li>
+				<li class="list-group-item">总价{{counter}}</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			var fruit = new Vue({
+				el:"#fruits",
+				data:{
+					fruitlist:[
+				{name:"orange",price:100,flag:0},
+				{name:"pear",price:200,flag:0},
+				{name:"apple",price:300,flag:0}
+				],
+				counter:0,
+				},
+				methods:{
+					calculate:function(item){
+						var some =item.price;
+						if(item.flag == 0){
+							event.target.style.background = "green";
+						    this.counter = this.counter + item.price;
+						    item.flag = 1;
+						}else{
+                            event.target.style.background = "white";
+						    this.counter = this.counter - item.price;
+						    item.flag = 0;
+						}
+						
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

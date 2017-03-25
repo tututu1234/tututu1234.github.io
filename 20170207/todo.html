@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="bootstrap-3.3.7-dist/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+		<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		
+	</head>
+
+	<body>
+		<nav class="navbar navbar-default ">
+			vuejs with indeex
+		</nav>
+		<div class="container" id="app">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<div class="panel-title">
+								Welcome to vuejs world
+							</div>
+						</div>
+						<div class="panel-body">
+							<h1>{{message}}</h1>
+							<input type="text" v-model = "message" class="form-control"/>
+							<ul class="list-group">
+								<li class="list-group-item" v-for = "(todo,index) in todos">{{todo.title}}
+								<button class="btn btn-warning pull-right btn-xs" v-on:click = "deleteTodo(index)">delete</button>
+								</li>
+							</ul>
+							<form action="" class="form-group" v-on:submit.prevent = "addTodo(newtodo)">
+								<div class="list-group">
+									<input type="text" class="form-control" placeholder="增加数据" v-model = "newtodo.title"/>
+								</div>
+								<button type = "submit" class="btn btn-success">增加</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+        <script type="text/javascript">
+        	new Vue({
+        		el:"#app",
+        		data:{
+        			message:"Hello World!",
+        			todos:[
+        			   {title:"the first vuejs"}
+        			],
+        			newtodo:{title:""}
+        		},
+        		methods:{
+        			addTodo:function(value){
+        				this.todos.push(value);
+        				window.localStorage.setItem("todos",JSON.stringify(this.todos));
+        				this.newtodo = {title:""}
+        			},
+        			deleteTodo:function(i){
+        				this.todos.splice(i,1);
+        			}
+        		}
+        	})
+        </script>
+	</body>
+
+</html>

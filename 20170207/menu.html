@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="bootstrap-3.3.7-dist/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+		<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.menu_main{
+				width: 500px;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container menu_main" id="menuList">
+			<h1>菜单列表</h1>
+			<ul class="list-group">
+				<li v-for = "meal in menu" class="list-group-item">
+					<div class="row">
+						<div class="col-md-8">
+							<h2>{{meal.name}}</h2>
+							<h4>月销量{{meal.sale}}件</h4>
+						</div>
+						<div class="col-md-4">
+							<button class="btn btn-default btn-primary" v-on:click = "totalPrice(meal)">{{meal.price}}元</button>
+							<h5>已点{{meal.Num}}份</h5>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<div class="row">
+				<div class="col-md-8">
+					<h4>已选{{mealNum}}份,共{{allPrice}}元</h4>
+				</div>
+				<div class="col-md-4">
+					<button class="btn btn-default btn-warning">去结算</button>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		new Vue({
+			el:"#menuList",
+			data:{
+				menu:[
+				  {name:"孜然香肉饭",sale:58,price:10,Num:0},
+				  {name:"铁板五花肉饭",sale:55,price:20,Num:0},
+				  {name:"香辣肉饭",sale:38,price:10,Num:0},
+				  {name:"孜然香肉饭",sale:58,price:10,Num:0},
+				  {name:"铁板肉饭",sale:48,price:20,Num:0},
+				  {name:"孜然香肉饭",sale:58,price:10,Num:0},
+				  {name:"孜然鸡腿饭",sale:77,price:15,Num:0},
+				],
+				mealNum:0,
+				allPrice:0,
+			},
+			methods:{
+				totalPrice:function(item){
+					var price = item.price;
+					this.allPrice = 0;
+					item.Num++;
+					this.mealNum ++;
+					var menu = this.menu;
+					for (var i = 0;i<menu.length;i++) {
+						this.allPrice = this.allPrice + menu[i].price *menu[i].Num;
+						
+					}	
+				}
+			}
+		})
+	</script>
+</html>

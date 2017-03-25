@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="renderer" content="webkit">
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="bootstrap-3.3.7-dist/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+		<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			img{
+				width: 100%;
+				height: 400px;
+			}
+		</style>
+	</head>
+	<body>
+			
+		
+		<nav class="navbar navbar-inverse navbar-static-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">MUSIC</a>
+				</div>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active1">
+							<a href="#">发现音乐</a>
+						</li>
+						<li>
+							<a href="#">我的音乐</a>
+						</li>
+						<li>
+							<a href="#">朋友</a>
+						</li>
+						<li>
+							<a href="#">商城</a>
+						</li>
+						<li>
+							<a href="#">音乐人</a>
+						</li>
+						<li>
+							<a href="#">下载客户端</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		
+		<div class="container">
+			<img src="img/1.png" id="imge"/>
+		</div>
+		
+		<div class="container" id="musiclist">
+			<ul class="list-group">
+				<li v-for="item in items" class="list-group-item">
+				<div class="row">
+					<div class="col-md-10">
+						<h1>{{item.name+" "+item.singer+" "+item.time}}</h1>
+					</div>
+					<div class="col-md-2">
+						<button class="btn btn-default btn-warning btn-lg">播放</button>
+					</div>
+				</div>
+				
+				</li>
+			</ul>
+		</div>
+
+		<script type="text/javascript">
+			var app=new Vue({
+				el:'#musiclist',
+				data:{
+					items:[
+						{name:"几个你",singer:"薛之谦",time:"5:16"},
+						{name:"下雨了",singer:"薛之谦",time:"5:05"},
+						{name:"小孩",singer:"薛之谦",time:"5:21"},
+						{name:"一半",singer:"薛之谦",time:"4:46"},
+						{name:"绅士",singer:"薛之谦",time:"4:50"}
+					],
+					count:0,
+					message:""
+				}
+			})
+			
+			var imgList = ["img/1.png","img/2.png","img/3.png"];
+			var m = 0;
+			setInterval(imgChange,1000);
+			function imgChange(){
+				$("#imge").attr("src",imgList[m]);
+				m = m + 1;
+				
+				if(m == imgList.length){
+					m = 0;
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<ul id="app">
+			<li v-for = "item in items">{{item.message}}</li>
+		</ul>
+		<div id="box">
+			<button v-on:click = "counter += 1">add</button>
+			<p>times:{{counter}}</p>
+		</div>
+		<div id="box2">
+			<button v-on:click = "greet">Greet</button>
+		</div>
+		<script type="text/javascript">
+			var uu = new Vue({
+				el:"#app",
+				data:{
+					items:[
+					{message:"foo"},
+					{message:"Bar"}
+					]
+				}
+			})
+			
+			var example = new Vue({
+				el:"#box",
+				data:{
+					counter:0
+				}
+			})
+			
+			var example2 = new Vue({
+				el:"#box2",
+				data:{
+					name:"vuejs"
+				},
+				methods:{
+					greet:function(event){
+						alert("hello"+this.name+"!")
+						alert(event.target.tagName)
+					}
+				}
+			})
+			
+//			example2.greet()
+		</script>
+	</body>
+</html>

@@ -1,0 +1,9 @@
+
+$fontSize:      12px;
+body{
+    $fontSize: 14px;        
+    font-size:$fontSize;
+}
+p{
+    font-size:$fontSize;
+}
