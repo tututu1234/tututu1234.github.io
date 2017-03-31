@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<script src="js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="top_fixed">
+			<p>C&amp;L candy life</p>
+			<a class="top_left" onclick="javascript:history.back(-1)">
+				<img src="img/arrow_white.png"/>
+				<span>返回</span>
+			</a>
+		</div>
+		<div class="orderConfirm">
+			<p>订单确认</p>
+			<a href="" onclick="javascript:history.back(-1)">
+				<img src="img/arrow_black.png"/>
+			</a>
+		</div>
+		<div class="addressConfirm">
+			<p class="name"><img src="img/icon-local.png"/><span id="account">樱桃小丸子</span><span style="color: #666666;margin-left: 0.15rem;" id="cellphone">187*****587</span></p>
+			<p class="address" id="address">浙江省杭州市滨江区新行路306号</p>
+			<img src="img/arrow_grey.png"/>
+		</div>
+		<div class="payMethods">
+			<p>支付方式</p>
+			<div class="byWechat">
+				<img src="img/wechat.png"/>
+				<div class="payDetail">
+					<p>微信支付</p>
+					<p style="color: #888888;font-size: 0.11rem;">推荐已在微信中绑定银行卡的用户使用</p>
+				</div>
+				<img src="img/check.png"/>
+			</div>
+		</div>
+		<div class="discount">
+			<span>优惠券</span>
+			<span>共有10张，已选0张<img src="img/arrow_grey.png" alt="" /></span>
+		</div>
+		<div class="orderDetail">
+			<p>订单详情</p>
+			<div class="goodsDetail">
+				<img src="img/goods.png"/>
+				<div class="detailText">
+					<p>娥佩兰 Opera 薏仁水化妆水 500ml 保湿爽肤水舒缓干燥</p>
+					<p style="font-size: 0.11rem;color: #888;">通用，40片</p>
+					<p><span>￥200.0</span><span style="margin-left: 2rem;">x1</span></p>
+				</div>
+			</div>
+			<p>小计：<span>￥200.0</span></p>
+		</div>
+		<div class="bottom_fixed">
+			<div class="bottom_left">
+				实付款：<span>￥220.0</span>
+			</div>
+			<a class="bottom_right">
+				支付订单
+			</a>
+		</div>
+		
+		<div class="addressFill">
+			<form class="addressDetail">
+				<p style="text-align: center;">您还没有填写收获地址，请填写</p>
+				<div class="nameAndphone">
+					<input type="text" name="" id="accountFill" value="" placeholder="姓名"/>
+					<input type="text" name="" id="cellphoneFill" value="" placeholder="手机号码"/>
+				</div>
+				<p class="choose">请选择所在区域<img src="img/arrow_grey.png" alt="" /></p>
+				<input type="text" name="" id="addressFill" value="" placeholder="请填写详细接到地址" class="addressText"/>
+				<div class="sure">
+					确定
+				</div>
+			</form>
+		</div>
+	</body>
+	<script src="js/act.js" type="text/javascript" charset="utf-8"></script>
+</html>

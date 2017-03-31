@@ -1,0 +1,11 @@
+$(function(){
+	$(".addressConfirm").click(function(){
+		$(".addressFill").show();
+	});
+	$(".sure").click(function(){
+		$("#account").text($("#accountFill").val());
+		$("#cellphone").text($("#cellphoneFill").val());
+		$("#address").text($("#addressFill").val());
+		$(".addressFill").hide();
+	})
+})
